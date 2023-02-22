@@ -1,13 +1,12 @@
 <template>
   <header>
-    <div class="logo"><span>let's</span> cook</div>
-    <NuxtLink to="/">Главная</NuxtLink>
+    <NuxtLink to="/"><div class="logo"><span>let's</span> cook</div></NuxtLink>
     <NuxtLink to="/favorites">Избранное</NuxtLink>
     <NuxtLink to="/myrecipes">Мои рецепты</NuxtLink>
     <NuxtLink to="/search">Поиск</NuxtLink>
     <NuxtLink to="/profile" :style="{display: seeLink ? 'flex' : 'none'}" >{{ username }}</NuxtLink>
-    <NuxtLink to="/login" :style="{display: seeLink ? 'flex' : 'none'}" @click="profileExit">Выход</NuxtLink>
-    <NuxtLink to="/login" :style="{display: seeLink ? 'none' : 'flex'}" @click="profileExit">Вход</NuxtLink>
+    <NuxtLink to="/login" :style="{display: seeLink ? 'flex' : 'none'}">Выход</NuxtLink>
+    <NuxtLink to="/login" :style="{display: seeLink ? 'none' : 'flex'}">Вход</NuxtLink>
   </header>
 </template>
 
@@ -60,8 +59,8 @@ a{
   color: black;
 }
 a:hover,
-a.router-link-active,
-a.router-link-exact-active {
+a.nuxt-link-active,
+a.nuxt-link-exact-active {
   color: #8A8A8A;
   cursor: pointer;
 }

@@ -1,13 +1,13 @@
 <template>
   <div>
-   <page-header/>
+  <page-header/>
 <!--    nuxt - это та страница, которая обрабатывается шаблоном-->
     <nuxt/>
   </div>
 
 </template>
 <script>
-import PageHeader from "~/components/Header";
+import PageHeader from "~/components/header";
 export default {
   components: {PageHeader}
 }
