@@ -24,6 +24,10 @@ export default {
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300;400;700&display=swap"
+      },
+      {
+        rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
       }
 
     ]
