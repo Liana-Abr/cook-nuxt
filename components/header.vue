@@ -4,6 +4,7 @@
     <NuxtLink to="/favorites">Избранное</NuxtLink>
     <NuxtLink to="/myrecipes">Мои рецепты</NuxtLink>
     <NuxtLink to="/search">Поиск</NuxtLink>
+    <NuxtLink to="/test">Test</NuxtLink>
     <NuxtLink to="/profile" :style="{display: seeLink ? 'flex' : 'none'}" >{{ username }}</NuxtLink>
     <NuxtLink to="/login" :style="{display: seeLink ? 'flex' : 'none'}">Выход</NuxtLink>
     <NuxtLink to="/login" :style="{display: seeLink ? 'none' : 'flex'}">Вход</NuxtLink>

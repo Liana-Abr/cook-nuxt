@@ -1,6 +1,8 @@
 <template>
   <div class="container">
     <h1>Рецепты</h1>
+
+
     <div class="cards">
       <div class="card" v-for="item in data" :key="item.id">
         <div class="card-img" :style="{ backgroundImage: `url('${item.imageURL}')` }"/>
@@ -19,9 +21,11 @@ export default {
   name: "home-page",
   data(){
     return{
-      data: jsonData
+      data: jsonData,
+      users: []
     }
-  }
+
+  },
 }
 
 </script>

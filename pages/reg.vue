@@ -4,6 +4,7 @@
       <div class="content">
         <div class="left">
           <h1>Регистрация</h1>
+
           <form @submit.prevent="regUser">
             <div class="input-field">
               <label>Имя</label>
@@ -17,15 +18,15 @@
             <div class="input-field-pwd">
               <label>Пароль</label>
               <div class="input-group">
-                <input type="password" name="password" v-show="!showPwd" v-model="regPwd" >
-                <!--                  <input type="text" name="password" v-show="showPwd" v-model="regPwd">-->
-
-                <!--                  <button class="hpwdBtn" @click="showPwd = !showPwd">-->
-                <!--                    <span v-show="!showPwd"><i class="bi bi-eye"></i></span>-->
-                <!--                    <span v-show="showPwd"><i class="bi bi-eye-slash"></i></span>-->
-                <!--                  </button>-->
+                <input type="password" name="password" v-model="regPwd" >
               </div>
 
+              <div class="input-field-pwd">
+                <label>Повторите пароль</label>
+                <div class="input-group">
+                  <input type="password" v-model="repeatPwd" :class="repeatPwd !== '' && !checkPwd ? 'wrong': 'success'" @input="check">
+                </div>
+              </div>
             </div>
             <div class="action">
               <button type="submit" class="regBtn">Зарегистрироваться</button>
@@ -51,29 +52,48 @@ export default {
   name:"reg-page",
   data(){
     return{
-      showPwd: false,
+      checkPwd: false,
       regName: "",
       regPwd: "",
+      repeatPwd: "",
       regEmail: "",
+
     }
   },
   methods:{
-    encryptPassword(){
-      // const salt = bcrypt.genSaltSync(10)
-      // return bcrypt.hashSync(this.regPwd, salt)
+    regUser: async function(e){
+      e.preventDefault();
+      let body = {
+        name: this.regName,
+        email: this.regEmail,
+        password: this.regPwd
+      }
+      if(this.checkPwd){
+        const data = await fetch('http://localhost:3001/users/',{
+          method: "post",
+          headers:{
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify(body)
+        }).then(res => res.json());
+        console.log(data)
+        if(data.message === "ok"){
+          localStorage.setItem("user", JSON.stringify(data.data));
+          this.$router.replace("/profile")
+        } else{
+          alert(data.message);
+        }
+        console.log(data);
+      }else{
+        alert("Пароли не совпадают!");
+      }
     },
-    regUser(){
-      // let body = {
-      //   name: this.regName,
-      //   email: this.regEmail,
-      //   password: this.regPwd
-      // }
-      // localStorage.setItem("userName", body.name);
-      // localStorage.setItem("userEmail", body.email);
-      // localStorage.setItem("userPwd", this.encryptPassword(body.password))
-      // this.$router.replace("/profile")
-      // console.log("Вы успешно зарегестрированы")
-    },
+    check: function () {
+      this.checkPwd = this.regPwd === this.repeatPwd
+
+    }
+
   }
 }
 </script>

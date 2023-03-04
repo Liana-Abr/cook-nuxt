@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxt_basic',
+    title: 'cook_nuxt',
     htmlAttrs: {
       lang: 'en'
     },
@@ -51,7 +51,12 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+
   ],
+
+  serverMiddleware: {
+    '/api': '~/api'
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
