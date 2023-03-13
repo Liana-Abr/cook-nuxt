@@ -2,13 +2,14 @@ const express = require('express')
 const app = express()
 let bodyParser = require('body-parser')
 const users = require('./routes/users')
-
+const cors = require('cors');
 
 // Import API Routes
 // app.use(test)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/users', users)
+app.use(cors)
 
 
 // Export express app
