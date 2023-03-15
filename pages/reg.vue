@@ -4,7 +4,6 @@
       <div class="content">
         <div class="left">
           <h1>Регистрация</h1>
-
           <form @submit.prevent="regUser">
             <div class="input-field">
               <label>Имя</label>
@@ -69,7 +68,7 @@ export default {
         password: this.regPwd
       }
       if(this.checkPwd){
-        const data = await fetch('http://localhost:3001/users/',{
+        const data = await fetch('http://localhost:3001/users/add',{
           method: "post",
           headers:{
             "Content-Type": "application/json",
@@ -77,14 +76,9 @@ export default {
           },
           body: JSON.stringify(body)
         }).then(res => res.json());
+        localStorage.setItem("UserName", JSON.stringify(body.name))
         console.log(data)
-        if(data.message === "ok"){
-          localStorage.setItem("user", JSON.stringify(data.data));
-          this.$router.replace("/profile")
-        } else{
-          alert(data.message);
-        }
-        console.log(data);
+
       }else{
         alert("Пароли не совпадают!");
       }
@@ -117,6 +111,7 @@ export default {
 .left{
   border: 2px solid #c4c4c4;
 }
+
 .img{
   border: 2px solid #c4c4c4;
   border-left: none;
@@ -151,6 +146,7 @@ form{
   display: flex;
   flex-direction: column;
   text-align: left;
+  margin-top: 10px 0 0 0;
 }
 .input-group{
   font-size: 25px;

@@ -12,7 +12,13 @@ export default {
   name: "test-page",
   async fetch(){
     this.users = await fetch(
-      'http://localhost:3001/users'
+      'http://localhost:3001/users',{
+        method: "GET",
+        headers:{
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(body)
+      }
     ).then((res)=> res.json())
   },
   data(){

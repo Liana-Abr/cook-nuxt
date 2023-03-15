@@ -4,17 +4,23 @@
       <div class="content">
         <div class="left">
           <h1>Вход</h1>
+          <h3>{{pStatus}}</h3>
+
           <form @submit.prevent="logUser">
 
             <div class="input-field">
               <label>Почта</label>
-              <input type="email" name="email" v-model="authEmail">
+              <input type="email"
+                     name="email"
+                     v-model="authEmail">
             </div>
 
             <div class="input-field-pwd">
               <label>Пароль</label>
               <div class="input-group">
-                <input type="password" name="password" v-model="authPwd">
+                <input type="password"
+                       name="password"
+                       v-model="authPwd">
               </div>
 
             </div>
@@ -40,21 +46,40 @@ export default {
   name:"login-page",
   data(){
     return{
+      pStatus: "",
+      accessToken: "",
       authEmail: "",
       authPwd: "",
     }
   },
   methods:{
-    logUser(){
-      // let body = {
-      //   email: this.authEmail,
-      //   password: this.authPwd,
-      // }
-      // localStorage.setItem("userEmail", body.email)
-      // localStorage.setItem("userPwd", body.password)
-      // console.log("Вы успешно вошли")
+    logUser: async function(e){
+      e.preventDefault();
+      const loginDetails = await this.getLoginInfo({ email: this.authEmail, password: this.authPwd });
+      console.log(loginDetails);
+      if (loginDetails.error) {
+        this.pStatus = loginDetails.error;
+        return
+      }
+      this.accessToken = loginDetails.accessToken;
+      console.log(this.accessToken)
+      localStorage.setItem("UserToken", this.accessToken)
+      this.pStatus = `Вы вошли в свой аккаунт!`
+    },
+    getLoginInfo: async function(data){
+      const res = await fetch(`http://localhost:3001/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      localStorage.setItem("UserEmail", JSON.stringify(data.email))
+      return await res.json();
     }
-  }
+  },
+
+
 }
 </script>
 
@@ -76,6 +101,11 @@ export default {
 }
 .left{
   border: 2px solid #c4c4c4;
+  justify-content: center;
+}
+.left h3{
+  text-align: center;
+  font-size: 20px;
 }
 .img{
   border: 2px solid #c4c4c4;

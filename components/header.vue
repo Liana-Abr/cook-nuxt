@@ -5,9 +5,9 @@
     <NuxtLink to="/myrecipes">Мои рецепты</NuxtLink>
     <NuxtLink to="/search">Поиск</NuxtLink>
     <NuxtLink to="/test">Test</NuxtLink>
-    <NuxtLink to="/profile" :style="{display: seeLink ? 'flex' : 'none'}" >{{ username }}</NuxtLink>
-    <NuxtLink to="/login" :style="{display: seeLink ? 'flex' : 'none'}">Выход</NuxtLink>
-    <NuxtLink to="/login" :style="{display: seeLink ? 'none' : 'flex'}">Вход</NuxtLink>
+<!--    <NuxtLink to="/profile" :style="{display: seeLink ? 'flex' : 'none'}" >{{ username }}</NuxtLink>-->
+<!--    <NuxtLink to="/login" :style="{display: seeLink ? 'flex' : 'none'}">Выход</NuxtLink>-->
+<!--    <NuxtLink to="/login" :style="{display: seeLink ? 'none' : 'flex'}">Вход</NuxtLink>-->
   </header>
 </template>
 
@@ -18,7 +18,6 @@ export default {
   data(){
     return {
       seeLink: false,
-      username: ""
     }
   },
   methods:{
@@ -32,7 +31,7 @@ export default {
     // }
   },
   created() {
-    // this.seeLink = !!localStorage.getItem("userName");
+    // this.seeLink = !!localStorage.getItem("UserToken");
     // if(this.seeLink == true){
     //   this.username = localStorage.getItem("userName")
     // }
