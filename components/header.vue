@@ -1,46 +1,43 @@
 <template>
   <header>
     <NuxtLink to="/"><div class="logo"><span>let's</span> cook</div></NuxtLink>
-    <NuxtLink to="/favorites">Избранное</NuxtLink>
-    <NuxtLink to="/myrecipes">Мои рецепты</NuxtLink>
+    <NuxtLink to="/favorites" :style="{display: seeLink ? 'flex' : 'none'}">Избранное</NuxtLink>
+    <NuxtLink to="/myrecipes" :style="{display: seeLink ? 'flex' : 'none'}">Мои рецепты</NuxtLink>
     <NuxtLink to="/search">Поиск</NuxtLink>
-    <NuxtLink to="/test">Test</NuxtLink>
 <!--    <NuxtLink to="/profile" :style="{display: seeLink ? 'flex' : 'none'}" >{{ username }}</NuxtLink>-->
 <!--    <NuxtLink to="/login" :style="{display: seeLink ? 'flex' : 'none'}">Выход</NuxtLink>-->
-<!--    <NuxtLink to="/login" :style="{display: seeLink ? 'none' : 'flex'}">Вход</NuxtLink>-->
+    <NuxtLink to="/login" :style="{display: seeLink ? 'none' : 'flex'}">Войти</NuxtLink>
+    <NuxtLink to="/profile" :style="{display: seeLink ? 'flex' : 'none'}">Профиль</NuxtLink>
+    <button class="exitBtn" @click.prevent="profileExit" :style="{display: seeLink ? 'flex' : 'none'}">Выйти</button>
   </header>
 </template>
 
 <script>
 export default {
   name: "page-header",
-  auth: false ,
   data(){
     return {
       seeLink: false,
     }
   },
+  mounted() {
+    this.seeLink = !!localStorage.getItem("UserName") && !!localStorage.getItem("UserToken")
+  },
   methods:{
-    // profileExit(){
-    //   if(this.seeLink == true){
-    //     localStorage.removeItem("userName");
-    //     localStorage.removeItem("userEmail");
-    //     localStorage.removeItem("userPwd");
-    //     this.$router.replace("/")
-    //   }
-    // }
-  },
-  created() {
-    // this.seeLink = !!localStorage.getItem("UserToken");
-    // if(this.seeLink == true){
-    //   this.username = localStorage.getItem("userName")
-    // }
-  },
+    profileExit(){
+      if(localStorage.getItem("UserName") && localStorage.getItem("UserToken") && localStorage.getItem("UserEmail")){
+        localStorage.removeItem("UserName")
+        localStorage.removeItem("UserToken")
+        console.log("Exit")
+      }
+    }
+  }
 }
 </script>
 <style scoped>
 header{
   margin: 20px 0 0 0;
+  font-size: 25px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -50,6 +47,15 @@ header{
   color: #729343;
   font-weight: bold;
   font-size: 20px;
+}
+.exitBtn{
+  font-size: 25px;
+  padding: 10px;
+  background-color: #729343;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 }
 span{
   color: #8A8A8A;

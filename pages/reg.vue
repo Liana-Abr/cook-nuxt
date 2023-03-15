@@ -69,7 +69,7 @@ export default {
       }
       if(this.checkPwd){
         const data = await fetch('http://localhost:3001/users/add',{
-          method: "post",
+          method: "POST",
           headers:{
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -78,7 +78,6 @@ export default {
         }).then(res => res.json());
         localStorage.setItem("UserName", JSON.stringify(body.name))
         console.log(data)
-
       }else{
         alert("Пароли не совпадают!");
       }
@@ -146,7 +145,7 @@ form{
   display: flex;
   flex-direction: column;
   text-align: left;
-  margin-top: 10px 0 0 0;
+  margin: 10px 0 0 0;
 }
 .input-group{
   font-size: 25px;
@@ -170,6 +169,10 @@ form{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.signBtn{
+  color: #628037;
+  text-decoration: none;
 }
 .hpwdBtn{
   width: 50px;

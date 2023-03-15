@@ -4,7 +4,7 @@
       <div class="content">
         <div class="left">
           <h1>Вход</h1>
-          <h3>{{pStatus}}</h3>
+          <h3>{{status}}</h3>
 
           <form @submit.prevent="logUser">
 
@@ -46,7 +46,7 @@ export default {
   name:"login-page",
   data(){
     return{
-      pStatus: "",
+      status: "",
       accessToken: "",
       authEmail: "",
       authPwd: "",
@@ -54,17 +54,16 @@ export default {
   },
   methods:{
     logUser: async function(e){
-      e.preventDefault();
       const loginDetails = await this.getLoginInfo({ email: this.authEmail, password: this.authPwd });
       console.log(loginDetails);
       if (loginDetails.error) {
-        this.pStatus = loginDetails.error;
+        this.status = loginDetails.error;
         return
       }
       this.accessToken = loginDetails.accessToken;
       console.log(this.accessToken)
       localStorage.setItem("UserToken", this.accessToken)
-      this.pStatus = `Вы вошли в свой аккаунт!`
+      this.status = `Вы вошли в свой аккаунт!`
     },
     getLoginInfo: async function(data){
       const res = await fetch(`http://localhost:3001/auth/login`, {
@@ -165,6 +164,10 @@ form{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.signBtn{
+  color: #628037;
+  text-decoration: none;
 }
 .hpwdBtn{
   width: 50px;
