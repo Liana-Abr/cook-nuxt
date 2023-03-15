@@ -8,7 +8,6 @@
         <div class="card-img" :style="{ backgroundImage: `url('${item.imageURL}')` }"/>
         <p class="card-title">{{item.name}}</p>
         <div class="action-container">
-          <p class="clock"><i class="bi bi-clock"></i>{{item.time}}</p>
           <button class="btn">Перейти</button>
         </div>
       </div>
