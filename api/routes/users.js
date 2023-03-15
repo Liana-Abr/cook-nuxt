@@ -1,6 +1,4 @@
 const { Router } = require('express')
-const { v4: uuidv4} = require("uuid");
-const bcrypt = require('bcrypt');
 const router = Router()
 const userController = require('../../user.controller')
 /* All routers start with /users */
@@ -8,7 +6,7 @@ const userController = require('../../user.controller')
 //GET users
 router.get('/', userController.getUsers)
 
- //GET user by ID.
+//GET user by ID.
 router.get('/:id', userController.getOneUser)
 
 //POST user
