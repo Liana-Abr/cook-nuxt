@@ -21,13 +21,14 @@ export default {
     }
   },
   mounted() {
-    this.seeLink = !!localStorage.getItem("UserName") && !!localStorage.getItem("UserToken")
+    this.seeLink = !!localStorage.getItem("UserEmail") && !!localStorage.getItem("UserToken")
   },
   methods:{
     profileExit(){
-      if(localStorage.getItem("UserName") && localStorage.getItem("UserToken") && localStorage.getItem("UserEmail")){
+      if(localStorage.getItem("UserEmail") && localStorage.getItem("UserToken")){
         localStorage.removeItem("UserName")
         localStorage.removeItem("UserToken")
+        localStorage.removeItem("UserEmail")
         console.log("Exit")
       }
     }
@@ -54,8 +55,11 @@ header{
   background-color: #729343;
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
+}
+.exitBtn:hover{
+  background-color: #628037;
 }
 span{
   color: #8A8A8A;

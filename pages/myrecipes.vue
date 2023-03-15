@@ -11,4 +11,9 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.container h3{
+  text-align: center;
+  font-size: 35px;
+}
+</style>

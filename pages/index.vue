@@ -1,14 +1,13 @@
 <template>
   <div class="container">
     <h1>Рецепты</h1>
-
-
     <div class="cards">
       <div class="card" v-for="item in data" :key="item.id">
         <div class="card-img" :style="{ backgroundImage: `url('${item.imageURL}')` }"/>
         <p class="card-title">{{item.name}}</p>
         <div class="action-container">
           <p class="clock"><i class="bi bi-clock"></i>{{item.time}}</p>
+          <button class="btn">Перейти</button>
         </div>
       </div>
     </div>
@@ -22,10 +21,8 @@ export default {
   data(){
     return{
       data: jsonData,
-      users: []
     }
-
-  },
+  }
 }
 
 </script>
@@ -69,12 +66,16 @@ h1{
 }
 .btn{
   background-color: #729343;
-  height: 25px;
   color: white;
   margin: 20px;
+  border: none;
+  font-size: 25px;
   padding: 10px;
   border-radius: 10px;
-
+  cursor: pointer;
+}
+.btn:hover{
+  background-color: #628037;
 }
 h1{
   margin: 50px;

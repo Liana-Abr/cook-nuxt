@@ -20,16 +20,13 @@ export default {
     return {
       // seeLink: false,
       // seeForm: false,
-      userName: "",
       userEmail: "",
       // userPwd:"",
       // newUserPwd: ""
     }
   },
   mounted() {
-    this.userName = localStorage.getItem("UserName").replace(/['"]+/g, '');
     this.userEmail = localStorage.getItem("UserEmail").replace(/['"]+/g, '');
-
   },
 }
 </script>
