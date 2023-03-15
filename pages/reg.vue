@@ -4,6 +4,8 @@
       <div class="content">
         <div class="left">
           <h1>Регистрация</h1>
+          <h3>{{status}}</h3>
+
           <form @submit.prevent="regUser">
             <div class="input-field">
               <label>Имя</label>
@@ -51,6 +53,7 @@ export default {
   name:"reg-page",
   data(){
     return{
+      status: "",
       checkPwd: false,
       regName: "",
       regPwd: "",
@@ -77,9 +80,10 @@ export default {
           body: JSON.stringify(body)
         }).then(res => res.json());
         localStorage.setItem("UserName", JSON.stringify(body.name))
+        this.status = 'Регистрация прошла успешно!'
         console.log(data)
       }else{
-        alert("Пароли не совпадают!");
+        this.status = "Пароли не совпадают!"
       }
     },
     check: function () {
@@ -109,6 +113,10 @@ export default {
 }
 .left{
   border: 2px solid #c4c4c4;
+}
+.left h3{
+  text-align: center;
+  font-size: 20px;
 }
 
 .img{
