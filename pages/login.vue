@@ -101,6 +101,10 @@ export default {
 .left{
   border: 2px solid #c4c4c4;
   justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
 .left h3{
   text-align: center;
@@ -174,7 +178,7 @@ form{
 }
 .regBtn{
   font-size: 25px;
-  margin: 20px 0 5px;
+  margin: 50px 0 5px;
   padding: 20px;
   border-radius: 10px;
   border: none;

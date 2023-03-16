@@ -1,9 +1,34 @@
 <template>
   <div class="container">
-    <h1>Рецепты</h1>
     <div class="banner">
+        <div class="left">
+          <p class="title">Сайт с рецептами</p>
+          <p>
+            На этом сайте есть рецепты полезных блюд! <br>
+            Все возможности данного сайта:
+            <br>
+            - Регистрация и авторизация
+            <br>
+            - Добавления своего рецепта
+            <br>
+            - Зарегестрированный пользователь может добавлять рецепты к себе в Избранное
+          </p>
 
+        </div>
+        <div class="right"></div>
     </div>
+
+    <div class="filter-list">
+      <ul>
+        <ol class="filter-block">Без глютена</ol>
+        <ol class="filter-block">Без сахара</ol>
+        <ol class="filter-block">Мало калорий</ol>
+        <ol class="filter-block">Много белка</ol>
+        <ol class="filter-block">Без мяса</ol>
+        <ol class="filter-block">Мало углеводов</ol>
+      </ul>
+    </div>
+
     <div class="cards">
       <div class="card" v-for="item in data" :key="item.id">
         <div class="card-img" :style="{ backgroundImage: `url('${item.imageURL}')` }"/>
@@ -11,13 +36,6 @@
 
         <div class="action-container">
           <p class="clock"><i class="bi bi-clock"></i>{{item.time}}</p>
-<!--          <button class="btn-heart" @click.prevent="like = !like" :style="{display: like ? 'none':'flex'}">-->
-<!--            <i class="bi bi-heart"></i>-->
-<!--          </button>-->
-
-<!--          <button class="btn-heart-active" @click.prevent="like = !like" :style="{display: like ? 'flex':'none'}">-->
-<!--            <i class="bi bi-heart-fill"></i>-->
-<!--          </button>-->
           <button class="btn">Перейти</button>
         </div>
       </div>
@@ -38,7 +56,7 @@ export default {
 }
 
 </script>
-<style>
+<style scoped>
 h1{
   display: flex;
   justify-content: center;
@@ -52,11 +70,36 @@ h1{
 }
 
 .banner{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 2px solid #8A8A8A;
+  margin: 20px 0 0 0;
   width: 50%;
-  height: 20%;
-  background-color: #628037;
+  height: 600px;
 }
-
+.left{
+  display: flex;
+  flex-direction: column;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+.left .title{
+  font-size: 50px;
+  margin: 0;
+}
+.left p{
+  width: 700px;
+  font-size: 30px;
+}
+.right{
+  display: flex;
+  background-position: center;
+  background-size: contain;
+  background-image: url("../assets/plate.png");
+  background-repeat: no-repeat;
+}
 .card{
   width: 400px;
   border: 2px solid #c4c4c4;
@@ -127,5 +170,27 @@ h1{
 .card-title{
   font-size: 22px;
   text-align: center;
+}
+.filter-list ul{
+  margin: 50px 0;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  gap: 100px;
+}
+.filter-block{
+  cursor: pointer;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: #729343;
+  color: white;
+}
+
+.filter-block:hover{
+  background-color: #628037;
 }
 </style>

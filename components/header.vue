@@ -3,6 +3,22 @@
     <NuxtLink to="/"><div class="logo"><span>let's</span> cook</div></NuxtLink>
     <NuxtLink to="/favorites" :style="{display: seeLink ? 'flex' : 'none'}">Избранное</NuxtLink>
     <NuxtLink to="/myrecipes" :style="{display: seeLink ? 'flex' : 'none'}">Мои рецепты</NuxtLink>
+    <ul class="drop" @click="openNav = !openNav"><a>Категории<i class="bi bi-chevron-down" ></i></a>
+      <li class="drop_menu" :style="{display: openNav ? 'flex' : 'none'}">
+        <a>Первые блюда</a>
+        <a>Вторые блюда</a>
+        <a>Завтрак</a>
+        <a>Закуски</a>
+        <a>Обед</a>
+        <a>Салаты</a>
+        <a>Ужин</a>
+        <a>Соусы</a>
+        <a>Десерты</a>
+      </li>
+    </ul>
+
+
+
     <NuxtLink to="/search">Поиск</NuxtLink>
 <!--    <NuxtLink to="/profile" :style="{display: seeLink ? 'flex' : 'none'}" >{{ username }}</NuxtLink>-->
 <!--    <NuxtLink to="/login" :style="{display: seeLink ? 'flex' : 'none'}">Выход</NuxtLink>-->
@@ -18,6 +34,7 @@ export default {
   data(){
     return {
       seeLink: false,
+      openNav: false
     }
   },
   mounted() {
@@ -31,12 +48,16 @@ export default {
         localStorage.removeItem("UserEmail")
         console.log("Exit")
       }
+    },
+    display_drop_menu(){
+
     }
   }
 }
 </script>
 <style scoped>
 header{
+  position: relative;
   margin: 20px 0 0 0;
   font-size: 25px;
   display: flex;
@@ -48,6 +69,22 @@ header{
   color: #729343;
   font-weight: bold;
   font-size: 20px;
+}
+.drop{
+  text-decoration: none;
+}
+.drop_menu{
+  gap: 20px;
+  padding: 10px;
+  margin: 20px 0 0 0;
+  width: 300px;
+  height: 450px;
+  background-color: white;
+  border: 2px solid;
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  z-index: 999;
 }
 .exitBtn{
   font-size: 25px;
