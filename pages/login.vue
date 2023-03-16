@@ -26,7 +26,7 @@
             </div>
             <div class="action">
               <button type="submit" class="regBtn">Войти</button>
-              <p>Нет профиля? <router-link to="/reg" class="signBtn">Зарегестрироваться</router-link></p>
+              <p>Нет профиля? <router-link to="/reg" class="signBtn">Зарегистрироваться</router-link></p>
             </div>
           </form>
 
@@ -82,7 +82,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .reg-form-container{
   display: flex;
   justify-content: center;

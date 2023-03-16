@@ -17,8 +17,6 @@
       </li>
     </ul>
 
-
-
     <NuxtLink to="/search">Поиск</NuxtLink>
 <!--    <NuxtLink to="/profile" :style="{display: seeLink ? 'flex' : 'none'}" >{{ username }}</NuxtLink>-->
 <!--    <NuxtLink to="/login" :style="{display: seeLink ? 'flex' : 'none'}">Выход</NuxtLink>-->
@@ -68,7 +66,7 @@ header{
 .logo{
   color: #729343;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 30px;
 }
 .drop{
   text-decoration: none;

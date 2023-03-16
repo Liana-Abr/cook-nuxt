@@ -31,7 +31,9 @@ export default {
 
 <style scoped>
 .container{
+  display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .card{

@@ -4,7 +4,7 @@
         <div class="left">
           <p class="title">Сайт с рецептами</p>
           <p>
-            На этом сайте есть рецепты полезных блюд! <br>
+            На этом сайте есть рецепты различных блюд! <br>
             Все возможности данного сайта:
             <br>
             - Регистрация и авторизация
@@ -13,20 +13,22 @@
             <br>
             - Зарегестрированный пользователь может добавлять рецепты к себе в Избранное
           </p>
-
+          <button>
+            <NuxtLink to="/reg">Зарегистрироваться</NuxtLink>
+          </button>
         </div>
         <div class="right"></div>
     </div>
 
     <div class="filter-list">
-      <ul>
-        <ol class="filter-block">Без глютена</ol>
-        <ol class="filter-block">Без сахара</ol>
-        <ol class="filter-block">Мало калорий</ol>
-        <ol class="filter-block">Много белка</ol>
-        <ol class="filter-block">Без мяса</ol>
-        <ol class="filter-block">Мало углеводов</ol>
-      </ul>
+      <ol>
+        <li class="filter-block">Без глютена</li>
+        <li class="filter-block">Без сахара</li>
+        <li class="filter-block">Мало калорий</li>
+        <li class="filter-block">Много белка</li>
+        <li class="filter-block">Без мяса</li>
+        <li class="filter-block">Мало углеводов</li>
+      </ol>
     </div>
 
     <div class="cards">
@@ -36,7 +38,9 @@
 
         <div class="action-container">
           <p class="clock"><i class="bi bi-clock"></i>{{item.time}}</p>
-          <button class="btn">Перейти</button>
+          <button class="btn">
+            <NuxtLink to="/recipe">Перейти</NuxtLink>
+          </button>
         </div>
       </div>
     </div>
@@ -76,6 +80,23 @@ h1{
   margin: 20px 0 0 0;
   width: 50%;
   height: 600px;
+}
+.banner button{
+  font-size: 25px;
+  margin-right: 50%;
+  padding: 20px;
+  background-color: #729343;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.banner button a{
+  text-decoration: none;
+  color: white;
+}
+.banner button:hover{
+  background-color: #628037;
 }
 .left{
   display: flex;
@@ -161,6 +182,10 @@ h1{
   border-radius: 10px;
   cursor: pointer;
 }
+.btn a{
+  text-decoration: none;
+  color: white;
+}
 .btn:hover{
   background-color: #628037;
 }
@@ -171,7 +196,7 @@ h1{
   font-size: 22px;
   text-align: center;
 }
-.filter-list ul{
+.filter-list ol{
   margin: 50px 0;
   display: flex;
   width: 100%;
