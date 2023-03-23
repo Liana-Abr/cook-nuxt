@@ -31,13 +31,26 @@
       </ol>
     </div>
 
+<!--    <div class="cards">-->
+<!--      <div class="card" v-for="item in data" :key="item.id">-->
+<!--        <div class="card-img" :style="{ backgroundImage: `url('${item.imageURL}')` }"/>-->
+<!--        <p class="card-title">{{item.name}}</p>-->
+
+<!--        <div class="action-container">-->
+<!--          <p class="clock"><i class="bi bi-clock"></i>{{item.time}}</p>-->
+<!--          <button class="btn">-->
+<!--            <NuxtLink to="/recipe">Перейти</NuxtLink>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
     <div class="cards">
-      <div class="card" v-for="item in data" :key="item.id">
-        <div class="card-img" :style="{ backgroundImage: `url('${item.imageURL}')` }"/>
-        <p class="card-title">{{item.name}}</p>
+      <div class="card" >
+        <div class="card-img" :style="{ backgroundImage: `url('${}')` }"/>
+        <p class="card-title">{{}}</p>
 
         <div class="action-container">
-          <p class="clock"><i class="bi bi-clock"></i>{{item.time}}</p>
+          <p class="clock"><i class="bi bi-clock"></i>{{}}</p>
           <button class="btn">
             <NuxtLink to="/recipe">Перейти</NuxtLink>
           </button>
@@ -45,15 +58,18 @@
       </div>
     </div>
 
+
+
   </div>
 </template>
 <script>
-import jsonData from "../cook.json"
+// import jsonData from "../cook.json"
 export default {
   name: "home-page",
   data(){
     return{
-      data: jsonData,
+      recipes: []
+      // data: jsonData,
       // like: false
     }
   }

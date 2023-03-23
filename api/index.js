@@ -4,9 +4,9 @@ const dotenv = require('dotenv')
 let bodyParser = require('body-parser')
 const users = require('./routes/users')
 const auth = require('./routes/auth')
+const recipes = require('./routes/recipes')
 const cors = require('cors');
 const cookieParser = require("cookie-parser");
-
 dotenv.config();
 // Import API Routes
 // app.use(test)
@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/users', users);
 app.use('/auth', auth);
+app.use('/recipes', recipes);
 app.use(cookieParser())
 app.use(cors(corsOptions))
 

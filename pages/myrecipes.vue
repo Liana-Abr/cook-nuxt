@@ -5,8 +5,21 @@
     <button class="addRecipeBtn" @click="openMenuAddRecipe">Добавить рецепт</button>
     <div class="addRecipeForm" :style="{display: openMenu ? 'flex': 'none'}">
       <form @submit.prevent="addRecipes">
-        <input type="text" name="title" placeholder="Название">
+<!--        name-->
+<!--        description-->
+<!--        category-->
+<!--        time-->
+<!--        imageUrl-->
+<!--        tags-->
+<!--        ingredients-->
+<!--        steps-->
+<!--        fat-->
+<!--        protein-->
+<!--        carb-->
+<!--        calories-->
+        <input type="text" name="name" placeholder="Название">
         <input type="text" name="description" placeholder="Описание">
+        <input type="text" name="category" placeholder="Категория(Например: Завтрак)">
         <input type="text" name="img" placeholder="Ссылка на изображение">
         <textarea class="inp-long" name="ingredients" placeholder="Ингредиенты"></textarea>
         <textarea class="inp-long" name="steps" placeholder="Способ приготовления"></textarea>
@@ -59,6 +72,9 @@ export default {
   margin-bottom: 50px;
   border-radius: 10px;
   border: none;
+}
+.container .addRecipeBtn:hover{
+  background-color: #628037;
 }
 .addRecipeForm{
   display: flex;
