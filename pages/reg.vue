@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="action">
-              <button type="submit" class="regBtn">зарегистрироваться</button>
+              <button type="submit" class="regBtn">Зарегистрироваться</button>
               <p>Уже есть профиль? <router-link to="/login" class="signBtn">Войти</router-link></p>
             </div>
           </form>

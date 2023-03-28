@@ -31,26 +31,12 @@
       </ol>
     </div>
 
-<!--    <div class="cards">-->
-<!--      <div class="card" v-for="item in data" :key="item.id">-->
-<!--        <div class="card-img" :style="{ backgroundImage: `url('${item.imageURL}')` }"/>-->
-<!--        <p class="card-title">{{item.name}}</p>-->
-
-<!--        <div class="action-container">-->
-<!--          <p class="clock"><i class="bi bi-clock"></i>{{item.time}}</p>-->
-<!--          <button class="btn">-->
-<!--            <NuxtLink to="/recipe">Перейти</NuxtLink>-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
     <div class="cards">
-      <div class="card" >
-        <div class="card-img" :style="{ backgroundImage: `url('${}')` }"/>
-        <p class="card-title">{{}}</p>
-
+      <div class="card" v-for="card in recipes" :key="card.id">
+        <div class="card-img" :style="{backgroundImage: `url(${card.image || 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png' })`}"></div>
+        <p class="card-title">{{card.name}}</p>
         <div class="action-container">
-          <p class="clock"><i class="bi bi-clock"></i>{{}}</p>
+          <p class="clock"><i class="bi bi-clock"></i>{{card.time}}</p>
           <button class="btn">
             <NuxtLink to="/recipe">Перейти</NuxtLink>
           </button>
@@ -58,19 +44,25 @@
       </div>
     </div>
 
-
-
   </div>
 </template>
 <script>
 // import jsonData from "../cook.json"
 export default {
   name: "home-page",
+  async fetch(){
+    this.recipes = await fetch(
+      'http://localhost:3001/recipes',{
+        method: "GET",
+        headers:{
+          'Content-Type': "application/json"
+        }}
+    ).then(res => res.json())
+    console.log(this.recipes)
+  },
   data(){
     return{
       recipes: []
-      // data: jsonData,
-      // like: false
     }
   }
 }

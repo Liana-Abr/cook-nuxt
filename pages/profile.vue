@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h1>Профиль</h1>
-    <h2>{{userName}}</h2>
     <h2>{{userEmail}}</h2>
 
 <!--    <button @click.prevent="seeForm = !seeForm" >Изменить пароль</button>-->
@@ -26,7 +25,7 @@ export default {
     }
   },
   mounted() {
-    this.userEmail = localStorage.getItem("UserEmail").replace(/['"]+/g, '');
+    this.userEmail = localStorage.getItem("UserEmail")
   },
 }
 </script>

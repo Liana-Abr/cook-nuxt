@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const dotenv = require('dotenv')
-let bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 const users = require('./routes/users')
 const auth = require('./routes/auth')
 const recipes = require('./routes/recipes')
@@ -18,6 +18,7 @@ app.use('/auth', auth);
 app.use('/recipes', recipes);
 app.use(cookieParser())
 app.use(cors(corsOptions))
+
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
