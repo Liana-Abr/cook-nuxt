@@ -6,7 +6,7 @@
       <form @submit.prevent="addRecipes">
         <input type="text" name="name" placeholder="Название" v-model="recipeName">
         <input type="text" name="description" placeholder="Описание" v-model="recipeDesc">
-        <input type="text" name="category" placeholder="Категория(Например: Завтрак)" v-model="recipeCategory">
+        <input type="text" name="category" placeholder="Категория(Например: Завтрак)" v-model="formattedCategory">
         <input type="text" name="time" placeholder="Время готовки" v-model="recipeTime">
         <input type="text" name="img" placeholder="Ссылка на изображение" v-model="recipeImg">
         <input type="text" name="tags" placeholder="Теги" v-model="formattedTags">
@@ -32,7 +32,7 @@ export default {
       openMenu: false,
       recipeName: "",
       recipeDesc: "",
-      recipeCategory: "",
+      recipeCategory: [],
       recipeTime: "",
       recipeImg: "",
       recipeTags: [],
@@ -42,10 +42,17 @@ export default {
       recipeProt: "",
       recipeCarb: "",
       recipeCal: "",
-
     }
   },
   computed: {
+    formattedCategory :{
+      get(){
+        return this.recipeCategory.join(".");
+      },
+      set(value){
+        this.recipeCategory = value.split('.');
+      }
+    },
     formattedTags :{
       get(){
         return this.recipeTags.join(".");

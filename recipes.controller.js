@@ -24,13 +24,13 @@ class RecipesController{
   }
   async getOneRecipe(req,res){
     const id = req.params.id
-    const users = await db.query(`SELECT * FROM recipes where id = $1 `, [id])
-    res.json(users.rows[0])
+    const recipes = await db.query(`SELECT * FROM recipes where id = $1 `, [id])
+    res.json(recipes.rows[0])
   }
   async deleteRecipe(req,res){
     const id = req.params.id
-    const users = await db.query(`DELETE FROM recipes where id = $1 `, [id])
-    res.json(users.rows[0])
+    const recipes = await db.query(`DELETE FROM recipes where id = $1 `, [id])
+    res.json(recipes.rows[0])
   }
 }
 

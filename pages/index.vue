@@ -32,16 +32,16 @@
     </div>
 
     <div class="cards">
-      <div class="card" v-for="card in recipes" :key="card.id">
-        <div class="card-img" :style="{backgroundImage: `url(${card.image || 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png' })`}"></div>
-        <p class="card-title">{{card.name}}</p>
-        <div class="action-container">
-          <p class="clock"><i class="bi bi-clock"></i>{{card.time}}</p>
-          <button class="btn">
-            <NuxtLink to="/recipe">Перейти</NuxtLink>
-          </button>
+        <div class="card" v-for="card in recipes" :key="card.id">
+          <div class="card-img" :style="{backgroundImage: `url(${card.image || 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png' })`}"></div>
+          <p class="card-title">{{card.name}}</p>
+          <div class="action-container">
+            <p class="clock"><i class="bi bi-clock"></i>{{card.time}}</p>
+            <button class="btn" @click="$router.push(`/recipes/${card.id}`)">Перейти
+            </button>
+          </div>
         </div>
-      </div>
+
     </div>
 
   </div>
@@ -50,21 +50,19 @@
 // import jsonData from "../cook.json"
 export default {
   name: "home-page",
-  async fetch(){
-    this.recipes = await fetch(
-      'http://localhost:3001/recipes',{
-        method: "GET",
-        headers:{
-          'Content-Type': "application/json"
-        }}
-    ).then(res => res.json())
-    console.log(this.recipes)
+  created() {
+    let apiURL = `http://localhost:3001/recipes/`;
+    fetch(apiURL)
+      .then(res => res.json())
+      .then(res => (this.recipes = res))
+      .catch(error => console.log(error));
   },
   data(){
     return{
       recipes: []
     }
-  }
+  },
+
 }
 
 </script>

@@ -1,16 +1,22 @@
 <template>
   <div class="container">
-
     <div class="recipe-container">
       <div class="left-container">
-        <h3>Название рецепта</h3>
-        <div class="img"></div>
+        <div class="back-btn">
+          <router-link to="/">
+            <i class="bi bi-chevron-left"></i>
+          </router-link>
+        </div>
+
+        <h3>{{recipe.name}}</h3>
+        <div class="img" :style="{backgroundImage: `url( ${recipe.image})`}"></div>
+<!--        <div class="img"></div>-->
         <div class="contain">
           <div class="tags">
-            <div class="tag">Тег 1</div>
+            <div class="tag"></div>
             <div class="tag">Тег 2</div>
           </div>
-          <p class="clock"><i class="bi bi-clock"></i>40 мин</p>
+          <p class="clock"><i class="bi bi-clock">{{recipe.time}}</i></p>
         </div>
       </div>
       <div class="vl"></div>
@@ -50,7 +56,42 @@
 </template>
 <script>
 export default {
-  name: "recipe-page"
+  name: "recipe-page",
+  computed:{
+    id(){
+      return this.$route.params.id
+    }
+  },
+  // // validate ({ params }) {
+  // //   // Must be a number
+  // //   return /^\d+$/.test(params.id)
+  // // },
+  data() {
+    return {
+      recipe: {}
+    }
+  },
+  created() {
+    let apiURL = `http://localhost:3001/recipes/${this.id.toString()}`;
+    console.log(apiURL)
+    fetch(apiURL)
+      .then(res => res.json())
+      .then(res => (this.recipe = res))
+      .catch(error => console.log(error));
+  },
+  methods: {
+    // async getRecipesById () {
+    //   this.recipe = await fetch(`http://localhost:3001/recipes/${this.id}`,{
+    //     method: "GET",
+    //     headers:{
+    //       "Content-Type": "application/json",
+    //       "Accept": "application/json",
+    //     },
+    //   }).then(resp => resp.json())
+    //
+    //
+    // }
+  }
 }
 </script>
 
@@ -66,6 +107,14 @@ export default {
   font-weight: normal;
   font-size: 30px;
   margin: 5% 20%;
+}
+.back-btn a{
+  font-size: 25px;
+  border-radius: 50%;
+  border: 1px solid;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
 }
 .recipe-container{
   border: none;
@@ -96,7 +145,7 @@ export default {
   color: #8A8A8A;
 }
 .img{
-  background-image: url("https://cdn.lifehacker.ru/wp-content/uploads/2020/01/Depositphotos_77997072_l-2015_1580203384-e1580203435458-1600x800.jpg");
+  /*background-image: url("https://cdn11.bigcommerce.com/s-1812kprzl2/images/stencil/original/products/426/5082/no-image__12882.1665668288.jpg?c=2");*/
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
