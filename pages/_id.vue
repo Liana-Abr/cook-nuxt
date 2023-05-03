@@ -7,10 +7,11 @@
             <i class="bi bi-chevron-left"></i>
           </router-link>
         </div>
-
+        <h3>Path: {{ $route.path }}</h3>
         <h3>{{recipe.name}}</h3>
-        <div class="img" :style="{backgroundImage: `url( ${recipe.image})`}"></div>
-<!--        <div class="img"></div>-->
+        <div v-if="recipe.image" class="img" :style="{backgroundImage: `url( ${recipe.image})`}"></div>
+        <div v-else class="img">no img</div>
+        <!--        <div class="img"></div>-->
         <div class="contain">
           <div class="tags">
             <div class="tag"></div>
@@ -56,46 +57,16 @@
 </template>
 <script>
 export default {
-  name: "recipe-page",
-  computed:{
-    id(){
-      return this.$route.params.id
-    }
+  async asyncData({ params }) {
+    const id = params.id
+    const recipe = await fetch(
+      `http://localhost:3001/recipes/${id}`
+    ).then((res) => res.json())
+    return { id, recipe }
   },
-  // // validate ({ params }) {
-  // //   // Must be a number
-  // //   return /^\d+$/.test(params.id)
-  // // },
-  data() {
-    return {
-      recipe: {}
-    }
-  },
-  created() {
-    let apiURL = `http://localhost:3001/recipes/${this.id.toString()}`;
-    console.log(apiURL)
-    fetch(apiURL)
-      .then(res => res.json())
-      .then(res => (this.recipe = res))
-      .catch(error => console.log(error));
-  },
-  methods: {
-    // async getRecipesById () {
-    //   this.recipe = await fetch(`http://localhost:3001/recipes/${this.id}`,{
-    //     method: "GET",
-    //     headers:{
-    //       "Content-Type": "application/json",
-    //       "Accept": "application/json",
-    //     },
-    //   }).then(resp => resp.json())
-    //
-    //
-    // }
-  }
 }
 </script>
-
-<style scoped>
+<style>
 .container{
   display: flex;
   align-items: center;

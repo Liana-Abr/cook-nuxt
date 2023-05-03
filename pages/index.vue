@@ -1,23 +1,23 @@
 <template>
   <div class="container">
     <div class="banner">
-        <div class="left">
-          <p class="title">Сайт с рецептами</p>
-          <p>
-            На этом сайте есть рецепты различных блюд! <br>
-            Все возможности данного сайта:
-            <br>
-            - Регистрация и авторизация
-            <br>
-            - Добавления своего рецепта
-            <br>
-            - Зарегестрированный пользователь может добавлять рецепты к себе в Избранное
-          </p>
-          <button>
-            <NuxtLink to="/reg">Зарегистрироваться</NuxtLink>
-          </button>
-        </div>
-        <div class="right"></div>
+      <div class="left">
+        <p class="title">Сайт с рецептами</p>
+        <p>
+          На этом сайте есть рецепты различных блюд! <br>
+          Все возможности данного сайта:
+          <br>
+          - Регистрация и авторизация
+          <br>
+          - Добавления своего рецепта
+          <br>
+          - Зарегестрированный пользователь может добавлять рецепты к себе в Избранное
+        </p>
+        <button>
+          <NuxtLink to="/reg">Зарегистрироваться</NuxtLink>
+        </button>
+      </div>
+      <div class="right"></div>
     </div>
 
     <div class="filter-list">
@@ -32,39 +32,32 @@
     </div>
 
     <div class="cards">
-        <div class="card" v-for="card in recipes" :key="card.id">
-          <div class="card-img" :style="{backgroundImage: `url(${card.image || 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png' })`}"></div>
-          <p class="card-title">{{card.name}}</p>
-          <div class="action-container">
-            <p class="clock"><i class="bi bi-clock"></i>{{card.time}}</p>
-            <button class="btn" @click="$router.push(`/recipes/${card.id}`)">Перейти
-            </button>
-          </div>
+      <div class="card" v-for="recipe in recipes" :key="recipe.id">
+        <div v-if="recipe.image" class="card-img" :style="{backgroundImage: `url( ${recipe.image})`}"></div>
+        <div v-else class="card-img">no img</div>
+        <p class="card-title">{{recipe.name}}</p>
+        <div class="action-container">
+          <p class="clock"><i class="bi bi-clock"></i>{{recipe.time}}</p>
+                <NuxtLink :to="`/${recipe.id}`">
+                  <button class="btn">Перейти</button>
+                </NuxtLink>
         </div>
+      </div>
 
     </div>
 
   </div>
 </template>
 <script>
-// import jsonData from "../cook.json"
 export default {
-  name: "home-page",
-  created() {
-    let apiURL = `http://localhost:3001/recipes/`;
-    fetch(apiURL)
-      .then(res => res.json())
-      .then(res => (this.recipes = res))
-      .catch(error => console.log(error));
-  },
-  data(){
-    return{
-      recipes: []
-    }
-  },
+  async asyncData() {
+    const recipes = await fetch(
+      'http://localhost:3001/recipes'
+    ).then((res) => res.json())
 
+    return { recipes }
+  }
 }
-
 </script>
 <style scoped>
 h1{
@@ -78,7 +71,6 @@ h1{
   align-items: center;
   justify-content: center;
 }
-
 .banner{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -220,7 +212,6 @@ h1{
   background-color: #729343;
   color: white;
 }
-
 .filter-block:hover{
   background-color: #628037;
 }
