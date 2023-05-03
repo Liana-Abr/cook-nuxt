@@ -13,10 +13,13 @@
         <div v-else class="img">no img</div>
         <!--        <div class="img"></div>-->
         <div class="contain">
+
           <div class="tags">
-            <div class="tag"></div>
-            <div class="tag">Тег 2</div>
+            <div v-for="tag in recipe.tags" :key="tag.id" class="tag">
+              <p>{{ tag }}</p>
+            </div>
           </div>
+
           <p class="clock"><i class="bi bi-clock">{{recipe.time}}</i></p>
         </div>
       </div>
@@ -83,10 +86,8 @@ export default {
   color: black;
 }
 .recipe-container{
-  border: none;
+  justify-items: center;
   display: grid;
-  align-items: center;
-  justify-content: center;
   grid-template-columns: repeat(3,1fr);
 }
 .left-container, .contain{
@@ -127,13 +128,12 @@ export default {
 }
 .vl {
   border-left: 2px solid;
-  margin: 0 70%;
-  height: 500px;
-  width: 10px;
+  margin: 30%;
+  height: 800px;
 }
 .right{
   position: absolute;
-  left: 60%;
+  left: 54%;
 }
 .right h3 {
   text-transform: uppercase;
