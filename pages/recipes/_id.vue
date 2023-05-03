@@ -7,7 +7,7 @@
             <i class="bi bi-chevron-left"></i>
           </router-link>
         </div>
-        <h3>Path: {{ $route.path }}</h3>
+        <p class="path">главная/рецепты/{{recipe.name}}</p>
         <h3>{{recipe.name}}</h3>
         <div v-if="recipe.image" class="img" :style="{backgroundImage: `url( ${recipe.image})`}"></div>
         <div v-else class="img">no img</div>
@@ -26,28 +26,17 @@
         <div class="right-container">
 
           <div class="ingredients">
-            <div class="ingredient">
-              <p>Ингредиент</p> <p>50г</p>
+            <div class="ingredient" v-for="ingredient in recipe.ingredients" :key="ingredient.id">
+              <p>{{ ingredient }}</p>
             </div>
-            <div class="ingredient">
-              <p>Ингредиент</p> <p>50г</p>
-            </div>
-            <div class="ingredient">
-              <p>Ингредиент</p> <p>50г</p>
-            </div>
-            <div class="ingredient">
-              <p>Ингредиент</p> <p>50г</p>
-            </div>
-
           </div>
 
         </div>
         <h3>Способ приготовления</h3>
-        <div class="parts">
-          <ol>
-            <li>Инструкция к приготовлению</li>
-            <li>Инструкция к приготовлению</li>
-          </ol>
+        <div class="steps">
+          <ul v-for="step in recipe.steps" :key="step.id">
+            <li>{{ step }}</li>
+          </ul>
         </div>
 
       </div>
@@ -68,6 +57,7 @@ export default {
 </script>
 <style>
 .container{
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -78,6 +68,11 @@ export default {
   font-weight: normal;
   font-size: 30px;
   margin: 5% 20%;
+}
+.right{
+  height: 900px;
+  box-sizing: border-box;
+  overflow-y: inherit;
 }
 .back-btn a{
   font-size: 25px;
@@ -95,11 +90,17 @@ export default {
   grid-template-columns: repeat(3,1fr);
 }
 .left-container, .contain{
-  margin: 8% 0 0 20%;
+  margin: 8% 0 0 15%;
 }
 .left-container h3{
   font-size: 40px;
   width: 100%;
+}
+.path{
+  color: gray;
+  font-size: 20px;
+  margin-left: 20%;
+  text-transform: lowercase;
 }
 .contain .clock {
   font-size: 30px;
@@ -126,9 +127,13 @@ export default {
 }
 .vl {
   border-left: 2px solid;
-  margin: 0 50%;
-  height: 800px;
+  margin: 0 70%;
+  height: 500px;
   width: 10px;
+}
+.right{
+  position: absolute;
+  left: 60%;
 }
 .right h3 {
   text-transform: uppercase;
@@ -144,18 +149,18 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  text-decoration: underline;
 }
 .ingredient{
   display: flex;
   gap: 50px;
   font-size: 30px;
+  word-spacing: 5px;
 }
-.parts{
+.steps{
   text-transform: uppercase;
   font-size: 25px;
 }
-.parts li{
+.steps li{
   margin-bottom: 50px;
 }
 .clock{

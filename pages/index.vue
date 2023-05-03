@@ -38,7 +38,7 @@
         <p class="card-title">{{recipe.name}}</p>
         <div class="action-container">
           <p class="clock"><i class="bi bi-clock"></i>{{recipe.time}}</p>
-                <NuxtLink :to="`/${recipe.id}`">
+                <NuxtLink :to="`/recipes/${recipe.id}`">
                   <button class="btn">Перейти</button>
                 </NuxtLink>
         </div>
