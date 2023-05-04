@@ -71,7 +71,7 @@ export default {
         password: this.regPwd
       }
       if(this.checkPwd){
-        const data = await fetch('http://localhost:3001/users/add',{
+        const data = await fetch('http://localhost:3001/api/users/add',{
           method: "POST",
           headers:{
             "Content-Type": "application/json",

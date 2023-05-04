@@ -3,9 +3,9 @@
     <div class="recipe-container">
       <div class="left-container">
         <div class="back-btn">
-          <router-link to="/">
+          <NuxtLink to="/">
             <i class="bi bi-chevron-left"></i>
-          </router-link>
+          </NuxtLink>
         </div>
         <p class="path">главная/рецепты/{{recipe.name}}</p>
         <div class="categories">
@@ -59,13 +59,13 @@ export default {
   async asyncData({ params }) {
     const id = params.id
     const recipe = await fetch(
-      `http://localhost:3001/recipes/${id}`
+      `http://localhost:3001/api/recipes/${id}`
     ).then((res) => res.json())
     return { id, recipe }
   },
 }
 </script>
-<style>
+<style scoped>
 .container{
   position: relative;
   display: flex;
@@ -85,7 +85,6 @@ export default {
   overflow-y: inherit;
 }
 .back-btn a{
-  font-size: 25px;
   border-radius: 50%;
   border: 1px solid;
   padding: 10px;

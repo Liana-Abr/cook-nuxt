@@ -10,7 +10,7 @@ router.get('/',recipesController.getRecipes)
 
 //GET user by ID.
 router.get('/:id', recipesController.getOneRecipe)
-
+// router
 //POST user
 router.post("/add",recipesController.createRecipe);
 

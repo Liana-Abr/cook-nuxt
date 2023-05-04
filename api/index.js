@@ -13,9 +13,9 @@ dotenv.config();
 const corsOptions = {credentials: true, origin: process.env.URL || '*'};
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use('/users', users);
-app.use('/auth', auth);
-app.use('/recipes', recipes);
+app.use('/api/users', users);
+app.use('/api/auth', auth);
+app.use('/api/recipes', recipes);
 app.use(cookieParser())
 app.use(cors(corsOptions))
 

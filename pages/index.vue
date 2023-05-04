@@ -54,7 +54,7 @@
 export default {
   async asyncData() {
     const recipes = await fetch(
-      'http://localhost:3001/recipes'
+      'http://localhost:3001/api/recipes'
     ).then((res) => res.json())
 
     return { recipes }

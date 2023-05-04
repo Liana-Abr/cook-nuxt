@@ -66,7 +66,7 @@ export default {
       this.status = `Вы вошли в свой аккаунт!`
     },
     getLoginInfo: async function(data){
-      const res = await fetch(`http://localhost:3001/auth/login`, {
+      const res = await fetch(`http://localhost:3001/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
