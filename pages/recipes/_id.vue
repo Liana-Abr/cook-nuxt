@@ -8,12 +8,18 @@
           </router-link>
         </div>
         <p class="path">главная/рецепты/{{recipe.name}}</p>
+        <div class="categories">
+        <div class="category" v-for="category in recipe.categories" :key="category.id">
+          <p>{{ category }}</p>
+        </div>
+      </div>
         <h3>{{recipe.name}}</h3>
+
+
         <div v-if="recipe.image" class="img" :style="{backgroundImage: `url( ${recipe.image})`}"></div>
         <div v-else class="img">no img</div>
         <!--        <div class="img"></div>-->
         <div class="contain">
-
           <div class="tags">
             <div v-for="tag in recipe.tags" :key="tag.id" class="tag">
               <p>{{ tag }}</p>
@@ -21,6 +27,7 @@
           </div>
 
           <p class="clock"><i class="bi bi-clock">{{recipe.time}}</i></p>
+          <p class="description">{{recipe.description}}</p>
         </div>
       </div>
       <div class="vl"></div>
@@ -91,7 +98,8 @@ export default {
   grid-template-columns: repeat(3,1fr);
 }
 .left-container, .contain{
-  margin: 8% 0 0 15%;
+  margin: 8% 0 0 20%;
+  text-align: left;
 }
 .left-container h3{
   font-size: 40px;
@@ -103,6 +111,10 @@ export default {
   margin-left: 20%;
   text-transform: lowercase;
 }
+/*.categories{*/
+/*  display: flex;*/
+/*  color: #8A8A8A;*/
+/*}*/
 .contain .clock {
   font-size: 30px;
   gap: 10px;
@@ -170,6 +182,9 @@ export default {
   gap: 10px;
 }
 .clock i{
+  font-size: 30px;
+}
+.description{
   font-size: 30px;
 }
 </style>

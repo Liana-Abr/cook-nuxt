@@ -1,17 +1,18 @@
 <template>
   <div class="container">
-    <h1>Ваши рецепты</h1>
-    <button class="addRecipeBtn" @click="openMenuAddRecipe">Добавить рецепт</button>
-    <div class="addRecipeForm" :style="{display: openMenu ? 'flex': 'none'}">
+    <h1 class="title">На этой странице можно создать рецепт</h1>
+<!--    <button class="addRecipeBtn" @click="openMenuAddRecipe">Добавить рецепт</button>-->
+    <div class="addRecipeForm">
       <form @submit.prevent="addRecipes">
-        <input type="text" name="name" placeholder="Название" v-model="recipeName">
+        <p>Описание рецепта</p>
+        <input type="text" name="name" placeholder="Название*" v-model="recipeName" required>
         <input type="text" name="description" placeholder="Описание" v-model="recipeDesc">
-        <input type="text" name="category" placeholder="Категория(Например: Завтрак)" v-model="formattedCategory">
-        <input type="text" name="time" placeholder="Время готовки" v-model="recipeTime">
+        <input type="text" name="category" placeholder="Категория*(Пример: Завтрак)" v-model="formattedCategory" required>
+        <input type="text" name="time" placeholder="Время готовки(Пример: 30 минут" v-model="recipeTime">
         <input type="text" name="img" placeholder="Ссылка на изображение" v-model="recipeImg">
-        <input type="text" name="tags" placeholder="Теги" v-model="formattedTags">
-        <textarea class="inp-long" name="ingredients" placeholder="Ингредиенты" v-model="formattedIng"></textarea>
-        <textarea class="inp-long" name="steps" placeholder="Способ приготовления"  v-model="formattedSteps"></textarea>
+        <input type="text" name="tags" placeholder="Теги(Писать через запятую)" v-model="formattedTags">
+        <textarea class="inp-long" name="ingredients" placeholder="Ингредиенты*(Новый ингредиент через точку, пример: Масло 200г, ... )" v-model="formattedIng" required/>
+        <textarea class="inp-long" name="steps" placeholder="Способ приготовления*(Новый шаг через точку)"  v-model="formattedSteps" required/>
         <p>КБЖУ</p>
         <input type="text" name="fat" placeholder="Жиры" v-model="recipeFat">
         <input type="text" name="protein" placeholder="Белки" v-model="recipeProt">
@@ -19,17 +20,18 @@
         <input type="text" name="calories" placeholder="Калорийность" v-model="recipeCal">
         <button type="submit" class="addRecipeBtn" >Добавить</button>
       </form>
+      <p class="warn">* - это обязательное поле для заполнения</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name:"my-recipes-page",
+  name:"create-recipes-page",
   data(){
     return {
       // name, description, category, time, image, tags, ingredients, steps, fat, protein, carb, calories
-      openMenu: false,
+      // openMenu: false,
       recipeName: "",
       recipeDesc: "",
       recipeCategory: [],
@@ -79,9 +81,9 @@ export default {
     }
   },
   methods:{
-    openMenuAddRecipe(){
-      this.openMenu = !this.openMenu
-    },
+    // openMenuAddRecipe(){
+    //   this.openMenu = !this.openMenu
+    // },
     addRecipes: async function(e){
       e.preventDefault()
       let body = {
@@ -117,7 +119,7 @@ export default {
   text-align: center;
   position: relative;
 }
-.container h3{
+.container .title{
   text-align: center;
   font-size: 35px;
 }
@@ -138,7 +140,9 @@ export default {
 .addRecipeForm{
   display: flex;
   position: absolute;
+  margin-top: 50px;
   left: 45%;
+  top: 100%;
   justify-content: center;
 }
 .addRecipeForm form{
@@ -150,6 +154,9 @@ export default {
 }
 .addRecipeForm p{
   font-size: 30px;
+}
+.addRecipeForm .input-field{
+  display: flex;
 }
 .inp-long{
   width: 400px;
@@ -163,6 +170,10 @@ input{
   height: 50px;
   border-radius: 5px;
   font-size: 25px;
+}
+.warn{
+  font-size: 40px;
+  color: #ff7676;
 }
 
 </style>

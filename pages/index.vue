@@ -3,7 +3,7 @@
     <div class="banner">
       <div class="left">
         <p class="title">Сайт с рецептами</p>
-        <p>
+        <p class="banner-text">
           На этом сайте есть рецепты различных блюд! <br>
           Все возможности данного сайта:
           <br>
@@ -17,7 +17,9 @@
           <NuxtLink to="/reg">Зарегистрироваться</NuxtLink>
         </button>
       </div>
-      <div class="right"></div>
+      <div class="right">
+        <img class="banner-img" src="https://freepngimg.com/save/139206-food-plate-top-snack-view/528x525" alt="plate">
+      </div>
     </div>
 
     <div class="filter-list">
@@ -79,6 +81,9 @@ h1{
   width: 50%;
   height: 600px;
 }
+.banner .banner-text{
+  width: 800px;
+}
 .banner button{
   font-size: 25px;
   margin-right: 50%;
@@ -112,13 +117,7 @@ h1{
   width: 700px;
   font-size: 30px;
 }
-.right{
-  display: flex;
-  background-position: center;
-  background-size: contain;
-  background-image: url("../assets/plate.png");
-  background-repeat: no-repeat;
-}
+
 .card{
   width: 400px;
   border: 2px solid #c4c4c4;
@@ -129,6 +128,7 @@ h1{
 .card-img{
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   height: 250px;
 }
 .cards{
