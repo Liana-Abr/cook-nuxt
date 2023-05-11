@@ -117,7 +117,11 @@ h1{
   width: 700px;
   font-size: 30px;
 }
-
+.right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .card{
   width: 400px;
   border: 2px solid #c4c4c4;

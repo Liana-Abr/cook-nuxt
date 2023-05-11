@@ -10,9 +10,9 @@
         <input type="text" name="category" placeholder="Категория*(Пример: Завтрак)" v-model="formattedCategory" required>
         <input type="text" name="time" placeholder="Время готовки(Пример: 30 минут" v-model="recipeTime">
         <input type="text" name="img" placeholder="Ссылка на изображение" v-model="recipeImg">
-        <input type="text" name="tags" placeholder="Теги(Писать через запятую)" v-model="formattedTags">
-        <textarea class="inp-long" name="ingredients" placeholder="Ингредиенты*(Новый ингредиент через точку, пример: Масло 200г, ... )" v-model="formattedIng" required/>
-        <textarea class="inp-long" name="steps" placeholder="Способ приготовления*(Новый шаг через точку)"  v-model="formattedSteps" required/>
+        <input type="text" name="tags" placeholder="Теги(Писать через точку)" v-model="formattedTags">
+        <textarea class="inp-long" name="ingredients" placeholder="Ингредиенты*(Новый ингредиент через точку,после последнего ингрд точку ставить не надо, пример: Масло 200г. ... )" v-model="formattedIng" required/>
+        <textarea class="inp-long" name="steps" placeholder="Способ приготовления*(Новый шаг через точку,после последнего шага точку ставить не надо)"  v-model="formattedSteps" required/>
         <p>КБЖУ</p>
         <input type="text" name="fat" placeholder="Жиры" v-model="recipeFat">
         <input type="text" name="protein" placeholder="Белки" v-model="recipeProt">
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import login from "~/pages/login";
+
 export default {
   name:"create-recipes-page",
   data(){
@@ -100,15 +102,18 @@ export default {
         carb:this.recipeCarb ,
         calories:this.recipeCal ,
       }
-      const data = await fetch("http://localhost:3001/recipes/add",{
+     await fetch("http://localhost:3001/api/recipes/add",{
         method: "POST",
         headers:{
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
         body: JSON.stringify(body)
-      }).then(res => res.json());
-      console.log(data)
+      }).then(res => res.json())
+       .then(data =>{
+        console.log(data)
+      })
+       .catch(err => console.log(err));
     }
   }
 }
@@ -160,10 +165,9 @@ export default {
 }
 .inp-long{
   width: 400px;
+  height: 300px;
   font-size: 25px;
   align-items: flex-end;
-  height: 200px;
-
 }
 input{
   width: 400px;

@@ -28,6 +28,32 @@
 
           <p class="clock"><i class="bi bi-clock">{{recipe.time}}</i></p>
           <p class="description">{{recipe.description}}</p>
+          <div class="info">
+
+            <div class="info-box">
+              <p>КБЖУ на 100г</p>
+              <table>
+                <tr>
+                  <th>Калории</th>
+                  <th>Белки</th>
+                  <th>Жиры</th>
+                  <th>Углеводы</th>
+                </tr>
+                <tr>
+                  <td>{{ recipe.calories }}</td>
+                  <td>{{ recipe.protein }}</td>
+                  <td>{{ recipe.fat }}</td>
+                  <td>{{ recipe.carb }}</td>
+                </tr>
+              </table>
+<!--              <ul>-->
+<!--                <li><span>{{recipe.calories}}</span></li>-->
+<!--                <li>Жиры<span>{{recipe.fat}}</span></li>-->
+<!--                <li>Белки<span>{{recipe.protein}}</span></li>-->
+<!--                <li>Углеводы<span>{{recipe.carb}}</span></li>-->
+<!--              </ul>-->
+            </div>
+          </div>
         </div>
       </div>
       <div class="vl"></div>
@@ -163,6 +189,7 @@ export default {
 }
 .ingredient{
   display: flex;
+  flex-direction: column;
   gap: 50px;
   font-size: 30px;
   word-spacing: 5px;
@@ -186,4 +213,35 @@ export default {
 .description{
   font-size: 30px;
 }
+.info-box tr:nth-child(even){background-color: #f2f2f2;}
+.info-box th {
+  padding: 10px;
+  background-color: #729343;
+  color: white;
+  font-size: 25px;
+}
+.info-box td{
+  text-align: center;
+  font-size: 25px;
+}
+.info-box p{
+  font-size: 25px;
+}
+/*.info{*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*}*/
+/*.info-box{*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*  align-items: center;*/
+/*}*/
+/*.info-box ul{*/
+/*  list-style: none;*/
+/*  word-spacing: 2px;*/
+/*}*/
+/*.info-box span{*/
+/*  color: red;*/
+/*  margin-left: 20px;*/
+/*}*/
 </style>
