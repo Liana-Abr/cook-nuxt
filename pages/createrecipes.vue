@@ -3,6 +3,7 @@
     <h1 class="title">На этой странице можно создать рецепт</h1>
 <!--    <button class="addRecipeBtn" @click="openMenuAddRecipe">Добавить рецепт</button>-->
     <div :style="{display: openModal ? 'flex' : 'none' }" class="modal">
+      <div class="modal-icon"><i class="bi bi-check-circle-fill"></i></div>
       <h3>{{ status }}</h3>
       <button @click="openModal = !openModal" class="modal-btn">Хорошо</button>
     </div>
@@ -10,7 +11,7 @@
       <form @submit.prevent="addRecipes">
         <p>Описание рецепта</p>
         <input type="text" name="name" placeholder="Название*" v-model="recipeName" required>
-        <input type="text" name="description" placeholder="Описание" v-model="recipeDesc">
+        <input type="text" name="description" placeholder="Описание.Обязательно укажите источник рецепта" v-model="recipeDesc">
         <input type="text" name="category" placeholder="Категория*(Пример: Завтрак)" v-model="formattedCategory" required>
         <input type="text" name="time" placeholder="Время готовки(Пример: 30 минут" v-model="recipeTime">
         <input type="text" name="img" placeholder="Ссылка на изображение" v-model="recipeImg">
@@ -156,7 +157,7 @@ export default {
 .modal{
   display: none;
   flex-direction: column;
-  width: 300px;
+  width: 500px;
   background-color: white;
   position: absolute;
   left: 47%;
@@ -165,6 +166,10 @@ export default {
   z-index: 99;
   border: 5px solid;
   border-radius: 20px;
+}
+.modal-icon i{
+  font-size: 70px;
+  color: #729343;
 }
 .modal-btn{
   padding: 10px;
