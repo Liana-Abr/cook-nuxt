@@ -46,12 +46,6 @@
                   <td>{{ recipe.carb }}</td>
                 </tr>
               </table>
-<!--              <ul>-->
-<!--                <li><span>{{recipe.calories}}</span></li>-->
-<!--                <li>Жиры<span>{{recipe.fat}}</span></li>-->
-<!--                <li>Белки<span>{{recipe.protein}}</span></li>-->
-<!--                <li>Углеводы<span>{{recipe.carb}}</span></li>-->
-<!--              </ul>-->
             </div>
           </div>
         </div>
@@ -170,7 +164,10 @@ export default {
 }
 .right{
   position: absolute;
+  overflow-y: scroll;
   left: 54%;
+  margin-top: 75px;
+  height: 1600px;
 }
 .right h3 {
   text-transform: uppercase;
