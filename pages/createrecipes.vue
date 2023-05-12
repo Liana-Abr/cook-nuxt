@@ -2,6 +2,10 @@
   <div class="container">
     <h1 class="title">На этой странице можно создать рецепт</h1>
 <!--    <button class="addRecipeBtn" @click="openMenuAddRecipe">Добавить рецепт</button>-->
+    <div :style="{display: openModal ? 'flex' : 'none' }" class="modal">
+      <h3>{{ status }}</h3>
+      <button @click="openModal = !openModal" class="modal-btn">Хорошо</button>
+    </div>
     <div class="addRecipeForm">
       <form @submit.prevent="addRecipes">
         <p>Описание рецепта</p>
@@ -33,7 +37,8 @@ export default {
   data(){
     return {
       // name, description, category, time, image, tags, ingredients, steps, fat, protein, carb, calories
-      // openMenu: false,
+      status: "",
+      openModal: false,
       recipeName: "",
       recipeDesc: "",
       recipeCategory: [],
@@ -112,8 +117,14 @@ export default {
       }).then(res => res.json())
        .then(data =>{
         console.log(data)
+         this.openModal = true
+         this.status = `Ваш рецепт успешно добавлен!`
       })
-       .catch(err => console.log(err));
+       .catch(err => {
+         console.log(err)
+         this.openModal = true
+         this.status = `${err}`
+       });
     }
   }
 }
@@ -140,6 +151,31 @@ export default {
   border: none;
 }
 .container .addRecipeBtn:hover{
+  background-color: #628037;
+}
+.modal{
+  display: none;
+  flex-direction: column;
+  width: 300px;
+  background-color: white;
+  position: absolute;
+  left: 47%;
+  top: 400px;
+  font-size: 25px;
+  z-index: 99;
+  border: 5px solid;
+  border-radius: 20px;
+}
+.modal-btn{
+  padding: 10px;
+  font-size: 25px;
+  background-color: #729343;
+  margin: 10px;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.modal-btn:hover{
   background-color: #628037;
 }
 .addRecipeForm{
