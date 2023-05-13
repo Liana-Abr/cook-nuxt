@@ -1,11 +1,15 @@
 <template>
   <div class="container">
     <h1>Поиск</h1>
-    <search-component/>
-    <h3>Другие рецепты</h3>
+    <div class="search-container">
+      <form @submit.prevent="getData">
+        <input class="search-input" v-model="query" type="Text" placeholder="Введите название">
+        <button>Найти</button>
+      </form>
+    </div>
     <div class="cards">
-      <div class="card" v-for="item in data" :key="item.id">
-        <div class="card-img" :style="{ backgroundImage: `url('${item.imageURL}')` }"/>
+      <div class="card" v-for="(item,index) in filteredRecipes" :key="index">
+        <div class="card-img" :style="{ backgroundImage: `url('${item.image}')` }"/>
         <p class="card-title">{{item.name}}</p>
         <div class="action-container">
           <button class="btn">Перейти</button>
@@ -16,16 +20,33 @@
 </template>
 
 <script>
-import jsonData from "../cook.json"
-import SearchComponent from "~/components/search";
 export default {
   name:"search-page",
-  components: {SearchComponent},
   data(){
     return{
-      data: jsonData.slice(0,3),
+      query: "",
+      data:[]
     }
-  }
+  },
+  computed:{
+    filteredRecipes(){
+      return this.data.filter(card =>{
+        return card.name.toUpperCase().indexOf(this.query.toUpperCase()) !== -1
+      })
+    }
+  },
+  methods:{
+    async getData(e) {
+      e.preventDefault()
+      this.data = await fetch(
+        'http://localhost:3001/api/recipes'
+      ).then((res) => res.json())
+        .catch((err)=> console.log(err))
+      console.log(this.data)
+    }
+
+}
+
 }
 </script>
 
@@ -35,7 +56,33 @@ export default {
   align-items: center;
   flex-direction: column;
 }
-
+.search-container{
+  justify-content: center;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+.search-container .search-input{
+  width: 700px;
+  padding: 20px;
+  font-size: 32px;
+  outline: none;
+}
+.search-container button{
+  padding: 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #729343;
+  color: white;
+  border-radius: 10px;
+  font-size: 30px;
+}
+.search-container button:hover{
+  background-color: #628037;
+}
+.cards{
+  margin-top: 50px;
+}
 .card{
   width: 333px;
   border: 2px solid #c4c4c4;
@@ -46,6 +93,7 @@ export default {
 .card-img{
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   height: 250px;
 }
 h3{
