@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h1 class="title">На этой странице можно создать рецепт</h1>
-<!--    <button class="addRecipeBtn" @click="openMenuAddRecipe">Добавить рецепт</button>-->
     <div :style="{display: openModal ? 'flex' : 'none' }" class="modal">
       <div class="modal-icon"><i class="bi bi-check-circle-fill"></i></div>
       <h3>{{ status }}</h3>
@@ -9,30 +8,52 @@
     </div>
     <div class="addRecipeForm">
       <form @submit.prevent="addRecipes">
-        <p>Описание рецепта</p>
+        <p class="info">Описание рецепта</p>
         <input type="text" name="name" placeholder="Название*" v-model="recipeName" required>
-        <input type="text" name="description" placeholder="Описание.Обязательно укажите источник рецепта" v-model="recipeDesc">
+
+        <input type="text" name="description" placeholder="Описание" v-model="recipeDesc">
+        <ul class="w">
+          <li>Обязательно укажите источник рецепта</li>
+        </ul>
         <input type="text" name="category" placeholder="Категория*(Пример: Завтрак)" v-model="formattedCategory" required>
-        <input type="text" name="time" placeholder="Время готовки(Пример: 30 минут" v-model="recipeTime">
-        <input type="text" name="img" placeholder="Ссылка на изображение" v-model="recipeImg">
-        <input type="text" name="tags" placeholder="Теги(Писать через точку)" v-model="formattedTags">
-        <textarea class="inp-long" name="ingredients" placeholder="Ингредиенты*(Новый ингредиент через точку,после последнего ингрд точку ставить не надо, пример: Масло 200г. ... )" v-model="formattedIng" required/>
-        <textarea class="inp-long" name="steps" placeholder="Способ приготовления*(Новый шаг через точку,после последнего шага точку ставить не надо)"  v-model="formattedSteps" required/>
-        <p>КБЖУ</p>
+        <input type="text" name="time" placeholder="Время готовки" v-model="recipeTime">
+        <ul class="w">
+          <li>
+            Пример: 30 минут
+          </li>
+        </ul>
+        <input type="text" name="img" placeholder="URL изображения" v-model="recipeImg">
+        <input type="text" name="tags" placeholder="Теги" v-model="formattedTags">
+        <ul class="w">
+          <li>
+            Пример: Завтрак.Обед.Ужин. ...
+          </li>
+        </ul>
+        <textarea class="inp-long" name="ingredients" placeholder="Ингредиенты*" v-model="formattedIng" required/>
+        <ul class="w">
+          <li>Новый ингредиент через точку. </li>
+          <li>После последнего ингредиента точку ставить не надо, пример: Масло 200г. ...</li>
+        </ul>
+        <textarea class="inp-long" name="steps" placeholder="Способ приготовления*"  v-model="formattedSteps" required/>
+        <ul class="w">
+          <li>Новый шаг через точку</li>
+          <li>После последнего шага точку ставить не надо</li>
+        </ul>
+        <p class="info">КБЖУ</p>
         <input type="text" name="fat" placeholder="Жиры" v-model="recipeFat">
         <input type="text" name="protein" placeholder="Белки" v-model="recipeProt">
         <input type="text" name="carb" placeholder="Углеводы" v-model="recipeCarb">
         <input type="text" name="calories" placeholder="Калорийность" v-model="recipeCal">
         <button type="submit" class="addRecipeBtn" >Добавить</button>
       </form>
-      <p class="warn">* - это обязательное поле для заполнения</p>
+      <p class="warn">
+        * - это обязательное поле для заполнения
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-import login from "~/pages/login";
-
 export default {
   name:"create-recipes-page",
   data(){
@@ -198,11 +219,18 @@ export default {
   flex-direction: column;
   gap: 20px;
 }
-.addRecipeForm p{
+.addRecipeForm .info{
   font-size: 30px;
 }
 .addRecipeForm .input-field{
   display: flex;
+}
+.w{
+  font-size: 17px;
+  text-align: left;
+  color: #ff7676;
+  font-weight: bold;
+  width: 350px;
 }
 .inp-long{
   width: 400px;
@@ -217,7 +245,7 @@ input{
   font-size: 25px;
 }
 .warn{
-  font-size: 40px;
+  font-size: 30px;
   color: #ff7676;
 }
 
