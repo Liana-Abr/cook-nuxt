@@ -4,17 +4,17 @@ const router = Router()
 const recipesController = require('../../recipes.controller.js')
 // const authenticateToken = require("~/middleware/authorization");
 
-/* All routers start with /recipes */
-//GET users
+/* All routers start with /api/recipes */
+//GET recipes
 router.get('/',recipesController.getRecipes)
 
-//GET user by ID.
+//GET recipe by ID.
 router.get('/:id', recipesController.getOneRecipe)
-// router
-//POST user
+
+//POST recipe
 router.post("/add",recipesController.createRecipe);
 
-//DELETE user
+//DELETE recipe
 router.delete('/:id', recipesController.deleteRecipe)
 
 

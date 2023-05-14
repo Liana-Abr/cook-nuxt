@@ -2,12 +2,10 @@
   <div class="container">
     <h1>Поиск</h1>
     <div class="search-container">
-      <form @submit.prevent="getData">
-        <input class="search-input" v-model="query" type="Text" placeholder="Введите название">
-        <button>Найти</button>
-      </form>
+      <input class="search-input" v-model="query" type="Text" placeholder="Введите название">
+      <button>Найти</button>
     </div>
-    <div class="cards">
+    <div class="cards" v-if="query !== ''">
       <div class="card" v-for="(item,index) in filteredRecipes" :key="index">
         <div class="card-img" :style="{ backgroundImage: `url('${item.image}')` }"/>
         <p class="card-title">{{item.name}}</p>
@@ -22,30 +20,24 @@
 <script>
 export default {
   name:"search-page",
+  async asyncData() {
+    const recipes = await fetch(
+      'http://localhost:3001/api/recipes'
+    ).then((res) => res.json())
+    return {recipes}
+  },
   data(){
     return{
       query: "",
-      data:[]
     }
   },
   computed:{
     filteredRecipes(){
-      return this.data.filter(card =>{
+      return this.recipes.filter(card =>{
         return card.name.toUpperCase().indexOf(this.query.toUpperCase()) !== -1
       })
     }
   },
-  methods:{
-    async getData(e) {
-      e.preventDefault()
-      this.data = await fetch(
-        'http://localhost:3001/api/recipes'
-      ).then((res) => res.json())
-        .catch((err)=> console.log(err))
-      console.log(this.data)
-    }
-
-}
 
 }
 </script>
