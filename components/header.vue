@@ -44,12 +44,10 @@ export default {
         localStorage.removeItem("UserName")
         localStorage.removeItem("UserToken")
         localStorage.removeItem("UserEmail")
+        this.$nuxt.refresh()
         console.log("Exit")
       }
     },
-    display_drop_menu(){
-
-    }
   }
 }
 </script>

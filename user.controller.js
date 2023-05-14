@@ -14,9 +14,9 @@ class UserController{
       const newUser = await db.query(
         'INSERT INTO users (name,email,password) VALUES ($1,$2,$3) RETURNING *'
         , [name, email, hashedPassword]);
-      res.json(jwtTokens(newUser.rows[0]));
+      return res.json(jwtTokens(newUser.rows[0]));
     } catch (error) {
-      res.status(500).json({error: error.message});
+      return res.status(500).json({error: error.message});
     }
   }
   async getUsers(req,res){

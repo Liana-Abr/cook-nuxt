@@ -6,7 +6,7 @@
           <h1>Регистрация</h1>
           <h3>{{status}}</h3>
 
-          <form @submit.prevent="regUser">
+          <form @submit="regUser">
             <div class="input-field">
               <label>Имя</label>
               <input type="text" name="name" v-model="regName">
@@ -47,8 +47,6 @@
 </template>
 
 <script>
-import bcrypt from 'bcryptjs';
-
 export default {
   name:"reg-page",
   data(){

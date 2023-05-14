@@ -2,9 +2,8 @@ const { Router } = require('express')
 const router = Router()
 const userController = require('../../user.controller')
 const authenticateToken = require('../../middleware/authorization')
-// const authController = require('../../authController')
-/* All routers start with /users */
 
+/* All routers start with /users */
 //GET users
 router.get('/', authenticateToken,userController.getUsers)
 

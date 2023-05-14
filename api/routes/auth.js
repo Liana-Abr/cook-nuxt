@@ -26,7 +26,7 @@ router.post('/login', async (req,res)=>{
     res.json(tokens);
 
   } catch (error){
-    res.status(401).json({error: error.message})
+    return res.status(401).json({error: error.message})
   }
 })
 router.get('/refresh_token', (req, res) => {
