@@ -22,7 +22,7 @@
             Пример: 30 минут
           </li>
         </ul>
-        <input type="text" name="img" placeholder="URL изображения" v-model="recipeImg">
+        <input type="text" name="img" placeholder="URL изображения*" v-model="recipeImg" required>
         <input type="text" name="tags" placeholder="Теги" v-model="formattedTags">
         <ul class="w">
           <li>

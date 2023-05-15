@@ -14,6 +14,7 @@
         </div>
       </div>
         <h3>{{recipe.name}}</h3>
+        <NuxtLink :to="`/recipes/change/${recipe.id}`" class="change-btn"><i class="bi bi-pencil"></i></NuxtLink>
 
 
         <div v-if="recipe.image" class="img" :style="{backgroundImage: `url( ${recipe.image})`}"></div>
@@ -130,10 +131,13 @@ export default {
   margin-left: 20%;
   text-transform: lowercase;
 }
-/*.categories{*/
-/*  display: flex;*/
-/*  color: #8A8A8A;*/
-/*}*/
+.change-btn{
+  color: #729343;
+  font-size: 30px;
+  position: absolute;
+  top: 12%;
+  left: 43%;
+}
 .contain .clock {
   font-size: 30px;
   gap: 10px;

@@ -27,6 +27,12 @@ class RecipesController{
     const recipes = await db.query(`SELECT * FROM recipes where id = $1 `, [id])
     res.json(recipes.rows[0])
   }
+  async updateRecipe(req,res){
+    const {id, name, description, image, tags} = req.body
+    const recipe = await db.query(`UPDATE recipes set name = $1,description = $2, image = $3, tags = $4 where id = $5 RETURNING *`,
+      [name, description, image, tags, id])
+    res.json(recipe.rows[0])
+  }
   async deleteRecipe(req,res){
     const id = req.params.id
     const recipes = await db.query(`DELETE FROM recipes where id = $1 `, [id])

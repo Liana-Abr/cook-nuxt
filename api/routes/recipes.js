@@ -14,6 +14,7 @@ router.get('/:id', recipesController.getOneRecipe)
 //POST recipe
 router.post("/add",recipesController.createRecipe);
 
+router.put("/:id", recipesController.updateRecipe)
 //DELETE recipe
 router.delete('/:id', recipesController.deleteRecipe)
 
