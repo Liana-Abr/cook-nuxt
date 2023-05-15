@@ -226,9 +226,10 @@ export default {
   display: flex;
 }
 .w{
-  font-size: 17px;
+  font-size: 20px;
   text-align: left;
-  color: #ff7676;
+  margin: 0;
+  color: #729343;
   font-weight: bold;
   width: 350px;
 }
