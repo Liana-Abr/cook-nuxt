@@ -13,13 +13,12 @@
           <p>{{ category }}</p>
         </div>
       </div>
-        <h3>{{recipe.name}}</h3>
-        <NuxtLink :to="`/recipes/change/${recipe.id}`" class="change-btn"><i class="bi bi-pencil"></i></NuxtLink>
+        <h3>{{recipe.name}}<NuxtLink :to="`/recipes/change/${recipe.id}`" class="change-btn"><i class="bi bi-pencil"></i></NuxtLink></h3>
+
 
 
         <div v-if="recipe.image" class="img" :style="{backgroundImage: `url( ${recipe.image})`}"></div>
         <div v-else class="img">no img</div>
-        <!--        <div class="img"></div>-->
         <div class="contain">
           <div class="tags">
             <div v-for="tag in recipe.tags" :key="tag.id" class="tag">
@@ -123,6 +122,8 @@ export default {
 }
 .left-container h3{
   font-size: 40px;
+  display: flex;
+  justify-content: left;
   width: 100%;
 }
 .path{
@@ -134,9 +135,7 @@ export default {
 .change-btn{
   color: #729343;
   font-size: 30px;
-  position: absolute;
-  top: 12%;
-  left: 43%;
+  margin-left: 20px;
 }
 .contain .clock {
   font-size: 30px;
@@ -228,21 +227,4 @@ export default {
 .info-box p{
   font-size: 25px;
 }
-/*.info{*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*}*/
-/*.info-box{*/
-/*  display: flex;*/
-/*  flex-direction: row;*/
-/*  align-items: center;*/
-/*}*/
-/*.info-box ul{*/
-/*  list-style: none;*/
-/*  word-spacing: 2px;*/
-/*}*/
-/*.info-box span{*/
-/*  color: red;*/
-/*  margin-left: 20px;*/
-/*}*/
 </style>
