@@ -13,7 +13,18 @@
           <p>{{ category }}</p>
         </div>
       </div>
-        <h3>{{recipe.name}}<NuxtLink :to="`/recipes/change/${recipe.id}`" class="change-btn"><i class="bi bi-pencil"></i></NuxtLink></h3>
+        <div class="recipe-name">
+          <h3>{{recipe.name}}</h3>
+
+          <NuxtLink :to="`/recipes/change/${recipe.id}`" class="change-btn" :style="{display: seeIcon ? 'block' : 'none'}">
+            <i class="bi bi-pencil"></i>
+          </NuxtLink>
+          <button class="delete-btn" :style="{display: seeIcon ? 'block' : 'none'}">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+
+
 
 
 
@@ -76,6 +87,14 @@
 </template>
 <script>
 export default {
+  data(){
+    return{
+      seeIcon: false
+    }
+  },
+  mounted() {
+    this.seeIcon = !!localStorage.getItem("UserEmail") && !!localStorage.getItem("UserToken")
+  },
   async asyncData({ params }) {
     const id = params.id
     const recipe = await fetch(
@@ -119,12 +138,12 @@ export default {
 .left-container, .contain{
   margin: 8% 0 0 20%;
   text-align: left;
+  width: 100%;
 }
 .left-container h3{
-  font-size: 40px;
+  font-size: 28px;
   display: flex;
   justify-content: left;
-  width: 100%;
 }
 .path{
   color: gray;
@@ -132,10 +151,26 @@ export default {
   margin-left: 20%;
   text-transform: lowercase;
 }
+.recipe-name{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.recipe-name i{
+  margin: 0;
+}
 .change-btn{
   color: #729343;
   font-size: 30px;
   margin-left: 20px;
+}
+.delete-btn{
+  cursor: pointer;
+  color: #de5c5c;
+  font-size: 30px;
+  margin-left: 20px;
+  background-color: transparent;
+  border: none;
 }
 .contain .clock {
   font-size: 30px;

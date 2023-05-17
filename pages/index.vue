@@ -9,9 +9,9 @@
           <br>
           - Регистрация и авторизация
           <br>
-          - Добавления своего рецепта
+          - Создание, изменение и удаление рецепта для зарегестрированных пользователей
           <br>
-          - Зарегестрированный пользователь может добавлять рецепты к себе в Избранное
+<!--          - Зарегестрированный пользователь может добавлять рецепты к себе в Избранное-->
         </p>
         <button>
           <NuxtLink to="/reg">Зарегистрироваться</NuxtLink>
@@ -105,8 +105,8 @@ h1{
   display: flex;
   flex-direction: column;
   border: none;
+  margin-left: 70px;
   justify-content: center;
-  align-items: center;
   text-align: left;
 }
 .left .title{
@@ -206,7 +206,6 @@ h1{
   gap: 100px;
 }
 .filter-block{
-  cursor: pointer;
   text-transform: uppercase;
   display: flex;
   justify-content: center;

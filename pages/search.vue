@@ -3,7 +3,6 @@
     <h1>Поиск</h1>
     <div class="search-container">
       <input class="search-input" v-model="query" type="Text" placeholder="Введите название">
-      <button>Найти</button>
     </div>
     <div class="cards" v-if="query !== ''">
       <div class="card" v-for="(item,index) in filteredRecipes" :key="index">
@@ -59,18 +58,6 @@ export default {
   padding: 20px;
   font-size: 32px;
   outline: none;
-}
-.search-container button{
-  padding: 20px;
-  cursor: pointer;
-  border: none;
-  background-color: #729343;
-  color: white;
-  border-radius: 10px;
-  font-size: 30px;
-}
-.search-container button:hover{
-  background-color: #628037;
 }
 .cards{
   margin-top: 50px;
