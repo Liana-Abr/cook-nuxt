@@ -19,7 +19,7 @@
           <NuxtLink :to="`/recipes/change/${recipe.id}`" class="change-btn" :style="{display: seeIcon ? 'block' : 'none'}">
             <i class="bi bi-pencil"></i>
           </NuxtLink>
-          <button class="delete-btn" :style="{display: seeIcon ? 'block' : 'none'}">
+          <button class="delete-btn" @click.prevent="deleteRecipe" :style="{display: seeIcon ? 'block' : 'none'}">
             <i class="bi bi-trash"></i>
           </button>
         </div>
@@ -94,6 +94,20 @@ export default {
   },
   mounted() {
     this.seeIcon = !!localStorage.getItem("UserEmail") && !!localStorage.getItem("UserToken")
+  },
+  methods:{
+    deleteRecipe: async function(){
+      await fetch(`http://localhost:3001/api/recipes/${this.recipe.id}`,{
+        method: "DELETE",
+        headers:{
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        }
+      })
+        .then((res) => res.json())
+        .catch((err) => console.log(err))
+      console.log("Recipe deleted!")
+    }
   },
   async asyncData({ params }) {
     const id = params.id
