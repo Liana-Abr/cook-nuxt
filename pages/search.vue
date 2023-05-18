@@ -9,7 +9,10 @@
         <div class="card-img" :style="{ backgroundImage: `url('${item.image}')` }"/>
         <p class="card-title">{{item.name}}</p>
         <div class="action-container">
-          <button class="btn">Перейти</button>
+          <p class="clock"><i class="bi bi-clock"></i>{{item.time}}</p>
+          <NuxtLink :to="`/recipes/${item.id}`">
+            <button class="btn">Перейти</button>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -74,6 +77,19 @@ export default {
   background-size: cover;
   background-position: center;
   height: 250px;
+}
+.card-title{
+  font-size: 25px;
+  text-align: center;
+}
+.clock{
+  font-size: 25px;
+  font-weight: normal;
+}
+.action-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 h3{
   margin: 100px 0 20px 0;
