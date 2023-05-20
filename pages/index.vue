@@ -128,6 +128,7 @@ h1{
   font-weight: bold;
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 }
 .card-img{
   background-repeat: no-repeat;

@@ -5,15 +5,9 @@
     <NuxtLink to="/createrecipes" :style="{display: seeLink ? 'flex' : 'none'}">Создать рецепты</NuxtLink>
     <ul class="drop" @click="openNav = !openNav"><a>Категории<i class="bi bi-chevron-down" ></i></a>
       <li class="drop_menu" :style="{display: openNav ? 'flex' : 'none'}">
-        <a>Первые блюда</a>
-        <a>Вторые блюда</a>
-        <a>Завтрак</a>
-        <a>Закуски</a>
-        <a>Обед</a>
-        <a>Салаты</a>
-        <a>Ужин</a>
-        <a>Соусы</a>
-        <a>Десерты и выпечка</a>
+        <NuxtLink to="/category/breakfast">Завтраки</NuxtLink>
+        <NuxtLink to="/category/salads">Салаты</NuxtLink>
+        <NuxtLink to="/category/pastry">Выпечка и десерты</NuxtLink>
       </li>
     </ul>
 
@@ -22,7 +16,7 @@
 <!--    <NuxtLink to="/login" :style="{display: seeLink ? 'flex' : 'none'}">Выход</NuxtLink>-->
     <NuxtLink to="/login" :style="{display: seeLink ? 'none' : 'flex'}">Войти</NuxtLink>
     <NuxtLink to="/profile" :style="{display: seeLink ? 'flex' : 'none'}">Профиль</NuxtLink>
-    <button class="exitBtn" @click.prevent="profileExit" :style="{display: seeLink ? 'flex' : 'none'}">Выйти</button>
+    <button class="exitBtn" @click="profileExit" :style="{display: seeLink ? 'flex' : 'none'}">Выйти</button>
   </header>
 </template>
 
@@ -44,9 +38,9 @@ export default {
         localStorage.removeItem("UserName")
         localStorage.removeItem("UserToken")
         localStorage.removeItem("UserEmail")
-        this.$nuxt.refresh()
         console.log("Exit")
       }
+      window.location.reload(true)
     },
   }
 }
@@ -74,7 +68,6 @@ header{
   padding: 10px;
   margin: 20px 0 0 0;
   width: 300px;
-  height: 450px;
   background-color: white;
   border: 2px solid;
   position: absolute;

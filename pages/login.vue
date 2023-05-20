@@ -4,7 +4,7 @@
       <div class="content">
         <div class="left">
           <h1>Вход</h1>
-          <h3>{{status}}</h3>
+          <h3 class="log-status">{{status}}</h3>
 
           <form @submit.prevent="logUser">
 
@@ -53,7 +53,7 @@ export default {
     }
   },
   methods:{
-    logUser: async function(e){
+    logUser: async function(){
       const loginDetails = await this.getLoginInfo({ email: this.authEmail, password: this.authPwd });
       console.log(loginDetails);
       if (loginDetails.error) {
@@ -106,9 +106,10 @@ export default {
   flex-direction: column;
   margin: 0;
 }
-.left h3{
+.log-status{
   text-align: center;
-  font-size: 20px;
+  font-size: 25px;
+  color: #729343;
 }
 .img{
   border: 2px solid #c4c4c4;

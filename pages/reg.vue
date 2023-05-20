@@ -4,9 +4,9 @@
       <div class="content">
         <div class="left">
           <h1>Регистрация</h1>
-          <h3>{{status}}</h3>
+          <h3 class="reg-status">{{status}}</h3>
 
-          <form @submit="regUser">
+          <form @submit.prevent="regUser">
             <div class="input-field">
               <label>Имя</label>
               <input type="text" name="name" v-model="regName">
@@ -61,8 +61,7 @@ export default {
     }
   },
   methods:{
-    regUser: async function(e){
-      e.preventDefault();
+    regUser: async function(){
       let body = {
         name: this.regName,
         email: this.regEmail,
@@ -116,9 +115,10 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.left h3{
+.reg-status{
   text-align: center;
-  font-size: 20px;
+  font-size: 25px;
+  color: #729343;
 }
 
 .img{
