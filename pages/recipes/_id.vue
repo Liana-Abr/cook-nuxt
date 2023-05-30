@@ -1,5 +1,15 @@
 <template>
   <div class="container">
+    <div class="modal-box" :style="{display : seeModal ? 'flex' : 'none'}">
+      <h3>Уверены, что хотите удалить рецепт?</h3>
+      <div class="modal-btns">
+        <button class="modal-delete-btn" @click.prevent="deleteRecipe" :style="{display: seeIcon ? 'block' : 'none'}">
+        Да
+        </button>
+        <button @click="seeModal = !seeModal" class="modal-close-modal">Нет</button>
+      </div>
+
+    </div>
     <div class="recipe-container">
       <div class="left-container">
         <div class="back-btn">
@@ -19,7 +29,7 @@
           <NuxtLink :to="`/recipes/change/${recipe.id}`" class="change-btn" :style="{display: seeIcon ? 'block' : 'none'}">
             <i class="bi bi-pencil"></i>
           </NuxtLink>
-          <button class="delete-btn" @click.prevent="deleteRecipe" :style="{display: seeIcon ? 'block' : 'none'}">
+          <button class="delete-btn" @click="seeModal = true" :style="{display: seeIcon ? 'block' : 'none'}">
             <i class="bi bi-trash"></i>
           </button>
         </div>
@@ -89,7 +99,8 @@
 export default {
   data(){
     return{
-      seeIcon: false
+      seeIcon: false,
+      seeModal: false
     }
   },
   mounted() {
@@ -131,6 +142,46 @@ export default {
   font-weight: normal;
   font-size: 30px;
   margin: 5% 20%;
+}
+.modal-box{
+  position: absolute;
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  top: 47%;
+  z-index: 99;
+  font-size: 25px;
+  border: 5px solid;
+  background-color: white;
+  border-radius: 20px;
+  text-align: center;
+}
+.modal-btns{
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+}
+.modal-delete-btn{
+  cursor: pointer;
+  color: white;
+  width: 80px;
+  font-size: 30px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #de5c5c;
+  border: none;
+  padding: 10px;
+}
+.modal-close-modal{
+  cursor: pointer;
+  color: white;
+  font-size: 30px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #729343;
+  border: none;
+  padding: 10px;
+
 }
 .right{
   height: 900px;

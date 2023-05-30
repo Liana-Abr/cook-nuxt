@@ -12,8 +12,6 @@
     </ul>
 
     <NuxtLink to="/search">Поиск</NuxtLink>
-<!--    <NuxtLink to="/profile" :style="{display: seeLink ? 'flex' : 'none'}" >{{ username }}</NuxtLink>-->
-<!--    <NuxtLink to="/login" :style="{display: seeLink ? 'flex' : 'none'}">Выход</NuxtLink>-->
     <NuxtLink to="/login" :style="{display: seeLink ? 'none' : 'flex'}">Войти</NuxtLink>
     <NuxtLink to="/profile" :style="{display: seeLink ? 'flex' : 'none'}">Профиль</NuxtLink>
     <button class="exitBtn" @click="profileExit" :style="{display: seeLink ? 'flex' : 'none'}">Выйти</button>
