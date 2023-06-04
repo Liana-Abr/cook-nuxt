@@ -39,7 +39,10 @@
         <div v-else class="card-img">no img</div>
         <p class="card-title">{{recipe.name}}</p>
         <div class="action-container">
-          <p class="clock"><i class="bi bi-clock"></i>{{recipe.time}}</p>
+          <div class="clock">
+            <i class="bi bi-clock"></i>
+            <p>{{recipe.time}}</p>
+          </div>
                 <NuxtLink :to="`/recipes/${recipe.id}`">
                   <button class="btn">Перейти</button>
                 </NuxtLink>
@@ -52,12 +55,15 @@
 </template>
 <script>
 export default {
-  async asyncData() {
-    const recipes = await fetch(
+  data() {
+    return{
+      recipes: []
+    }
+  },
+  async fetch() {
+    this.recipes = await fetch(
       'http://localhost:3001/api/recipes'
-    ).then((res) => res.json())
-
-    return { recipes }
+    ).then(res => res.json())
   }
 }
 </script>

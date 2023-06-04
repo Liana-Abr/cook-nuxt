@@ -14,7 +14,7 @@ app.use('/api/users', users);
 app.use('/api/auth', auth);
 app.use('/api/recipes', recipes);
 app.use(cookieParser())
-app.use(cors());
+app.use(cors())
 
 
 app.use(function (req, res, next) {

@@ -1,7 +1,7 @@
 <template>
   <header>
     <NuxtLink to="/"><div class="logo"><span>let's</span> cook</div></NuxtLink>
-    <NuxtLink to="/favorites" :style="{display: seeLink ? 'flex' : 'none'}">Избранное</NuxtLink>
+    <!-- <NuxtLink to="/favorites" :style="{display: seeLink ? 'flex' : 'none'}">Избранное</NuxtLink> -->
     <NuxtLink to="/createrecipes" :style="{display: seeLink ? 'flex' : 'none'}">Создать рецепты</NuxtLink>
     <ul class="drop" @click="openNav = !openNav"><a>Категории<i class="bi bi-chevron-down" ></i></a>
       <li class="drop_menu" :style="{display: openNav ? 'flex' : 'none'}">

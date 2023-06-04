@@ -47,7 +47,10 @@
             </div>
           </div>
 
-          <p class="clock"><i class="bi bi-clock">{{recipe.time}}</i></p>
+          <div class="clock">
+            <i class="bi bi-clock"></i>
+            <p>{{recipe.time}}</p>
+          </div>
           <p class="description">{{recipe.description}}</p>
           <div class="info">
 
@@ -103,6 +106,13 @@ export default {
       seeModal: false
     }
   },
+  async asyncData({ params }) {
+    const id = params.id
+    const recipe = await fetch(
+      `http://localhost:3001/api/recipes/${id}`
+    ).then((res) => res.json())
+    return { id, recipe }
+  },
   mounted() {
     this.seeIcon = !!localStorage.getItem("UserEmail") && !!localStorage.getItem("UserToken")
   },
@@ -119,14 +129,7 @@ export default {
         .catch((err) => console.log(err))
       console.log("Recipe deleted!")
     }
-  },
-  async asyncData({ params }) {
-    const id = params.id
-    const recipe = await fetch(
-      `http://localhost:3001/api/recipes/${id}`
-    ).then((res) => res.json())
-    return { id, recipe }
-  },
+  }
 }
 </script>
 <style scoped>

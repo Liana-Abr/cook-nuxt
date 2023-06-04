@@ -53,7 +53,8 @@ export default {
     }
   },
   methods:{
-    logUser: async function(){
+    logUser: async function(e){
+      e.preventDefault()
       const loginDetails = await this.getLoginInfo({ email: this.authEmail, password: this.authPwd });
       console.log(loginDetails);
       if (loginDetails.error) {
@@ -74,6 +75,7 @@ export default {
         body: JSON.stringify(data)
       });
       localStorage.setItem("UserEmail", JSON.stringify(data.email))
+
       return await res.json();
     }
   },

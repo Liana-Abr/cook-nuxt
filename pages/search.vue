@@ -9,7 +9,10 @@
         <div class="card-img" :style="{ backgroundImage: `url('${item.image}')` }"/>
         <p class="card-title">{{item.name}}</p>
         <div class="action-container">
-          <p class="clock"><i class="bi bi-clock"></i>{{item.time}}</p>
+          <div class="clock">
+            <i class="bi bi-clock"></i>
+            <p>{{item.time}}</p>
+          </div>
           <NuxtLink :to="`/recipes/${item.id}`">
             <button class="btn">Перейти</button>
           </NuxtLink>
@@ -22,16 +25,16 @@
 <script>
 export default {
   name:"search-page",
-  async asyncData() {
-    const recipes = await fetch(
-      'http://localhost:3001/api/recipes'
-    ).then((res) => res.json())
-    return {recipes}
-  },
   data(){
     return{
       query: "",
+      recipes:[]
     }
+  },
+  async fetch() {
+    this.recipes = await fetch(
+      'http://localhost:3001/api/recipes'
+    ).then(res => res.json())
   },
   computed:{
     filteredRecipes(){
