@@ -4,7 +4,7 @@
     <div :style="{display: openModal ? 'flex' : 'none' }" class="modal">
       <div class="modal-icon"><i class="bi bi-check-circle-fill"></i></div>
       <h3>{{ status }}</h3>
-      <button @click="openModal = !openModal" class="modal-btn">Хорошо</button>
+      <button @click="closeModal" class="modal-btn">Хорошо</button>
     </div>
     <div class="addRecipeForm">
       <form @submit.prevent="addRecipes">
@@ -113,6 +113,22 @@ export default {
     // openMenuAddRecipe(){
     //   this.openMenu = !this.openMenu
     // },
+    closeModal(){
+      this.openModal = !this.openModal
+        this.recipeName = "",
+        this.recipeDesc = "",
+        this.recipeCategory = [],
+        this.recipeTime = "",
+        this.recipeImg = "",
+        this.recipeTags = [],
+        this.recipeIng = [],
+        this.recipeSteps = [],
+        this.recipeFat = "",
+        this.recipeProt = "",
+        this.recipeCarb = "",
+        this.recipeCal = ""
+
+    },
     addRecipes: async function(e){
       e.preventDefault()
       let body = {

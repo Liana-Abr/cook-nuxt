@@ -1,4 +1,5 @@
-  <div class="reg-form-container">
+<template>
+<div class="reg-form-container">
     <div class="reg-form">
       <div class="content">
         <div class="left">
@@ -56,7 +57,7 @@ export default {
       regPwd: "",
       repeatPwd: "",
       regEmail: "",
-
+      regDate: `${new Date().toLocaleDateString().toString()}`
     }
   },
   methods:{
@@ -64,7 +65,8 @@ export default {
       let body = {
         name: this.regName,
         email: this.regEmail,
-        password: this.regPwd
+        password: this.regPwd,
+        regDate: this.regDate
       }
       if(this.checkPwd){
         const data = await fetch('http://localhost:3001/api/users/add',{
@@ -76,6 +78,7 @@ export default {
           body: JSON.stringify(body)
         }).then(res => res.json());
         localStorage.setItem("UserName", JSON.stringify(body.name))
+        localStorage.setItem("UserRegDate", JSON.stringify(body.regDate))
         this.status = 'Регистрация прошла успешно!'
         console.log(data)
       }else{
@@ -141,6 +144,9 @@ form{
   flex-direction: column;
   text-align: left;
 }
+.reg-form .input-field-date{
+  display: none;
+}
 .reg-form .input-field input {
   font-size: 25px;
   border-radius: 10px;
@@ -165,6 +171,7 @@ form{
 }
 .input-group input{
   width: 448px;
+  font-size: 25px;
   border: none;
   outline: none;
   transition: all .2s;

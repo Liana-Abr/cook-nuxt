@@ -158,6 +158,7 @@ form{
 }
 .input-group input{
   width: 448px;
+  font-size: 25px;
   border: none;
   outline: none;
   transition: all .2s;
