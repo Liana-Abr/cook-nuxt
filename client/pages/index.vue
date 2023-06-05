@@ -43,7 +43,7 @@
             <i class="bi bi-clock"></i>
             <p>{{recipe.time}}</p>
           </div>
-                <NuxtLink target="_blank" :to="`/recipes/${recipe.id}`">
+                <NuxtLink :to="`/recipes/${recipe.id}`">
                   <button class="btn">Перейти</button>
                 </NuxtLink>
         </div>
@@ -60,18 +60,12 @@ export default {
       recipes: []
     }
   },
-  async fetch() {
-    this.recipes = await fetch(
-      'http://localhost:3001/api/recipes',
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-  }
-    ).then(res => res.json())
-      .catch((e)=> console.log(e))
-  }
+  async asyncData( ) {
+    const recipes = await fetch(
+      `http://localhost:3001/api/recipes`
+    ).then((res) => res.json())
+    return { recipes }
+  },
 }
 </script>
 <style scoped>

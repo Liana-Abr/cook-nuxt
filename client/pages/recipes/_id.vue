@@ -12,11 +12,11 @@
     </div>
     <div class="recipe-container">
       <div class="left-container">
-<!--        <div class="back-btn">-->
-<!--          <NuxtLink to="/">-->
-<!--            <i class="bi bi-chevron-left"></i>-->
-<!--          </NuxtLink>-->
-<!--        </div>-->
+        <div class="back-btn">
+          <NuxtLink to="/">
+            <i class="bi bi-chevron-left"></i>
+          </NuxtLink>
+        </div>
         <p class="path">главная/рецепты/{{recipe.name}}</p>
         <div class="categories">
         <div class="category" v-for="category in recipe.categories" :key="category.id">
@@ -33,10 +33,6 @@
             <i class="bi bi-trash"></i>
           </button>
         </div>
-
-
-
-
 
         <div v-if="recipe.image" class="img" :style="{backgroundImage: `url( ${recipe.image})`}"></div>
         <div v-else class="img">no img</div>
@@ -106,13 +102,6 @@ export default {
       seeModal: false,
     }
   },
-  // async fetch({params}) {
-  //   const id = params.id
-  //   this.recipe = await fetch(
-  //     `http://localhost:3001/api/recipes/${id}`
-  //   ).then((res) => res.json())
-  // },
-
   async asyncData({ params }) {
     const id = params.id
     const recipe = await fetch(

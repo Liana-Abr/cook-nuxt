@@ -31,10 +31,11 @@ export default {
       recipes:[]
     }
   },
-  async fetch() {
-    this.recipes = await fetch(
-      'http://localhost:3001/api/recipes'
-    ).then(res => res.json())
+  async asyncData( ) {
+    const recipes = await fetch(
+      `http://localhost:3001/api/recipes`
+    ).then((res) => res.json())
+    return { recipes }
   },
   computed:{
     filteredRecipes(){

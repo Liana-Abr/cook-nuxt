@@ -1,4 +1,3 @@
-<template>
   <div class="reg-form-container">
     <div class="reg-form">
       <div class="content">

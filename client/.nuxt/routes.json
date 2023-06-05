@@ -2,85 +2,73 @@
   {
     "name": "category",
     "path": "/category",
-    "component": "/Users/lianaabramyan/Desktop/cook-nuxt-2/client/pages/category/index.vue",
-    "chunkName": "pages/category/index",
-    "_name": "_a63397f8"
+    "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/category/index.vue",
+    "chunkName": "pages/category/index"
   },
   {
     "name": "createrecipes",
     "path": "/createrecipes",
-    "component": "/Users/lianaabramyan/Desktop/cook-nuxt-2/client/pages/createrecipes.vue",
-    "chunkName": "pages/createrecipes",
-    "_name": "_3f294f76"
+    "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/createrecipes.vue",
+    "chunkName": "pages/createrecipes"
   },
   {
     "name": "favorites",
     "path": "/favorites",
-    "component": "/Users/lianaabramyan/Desktop/cook-nuxt-2/client/pages/favorites.vue",
-    "chunkName": "pages/favorites",
-    "_name": "_fea025b8"
+    "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/favorites.vue",
+    "chunkName": "pages/favorites"
   },
   {
     "name": "login",
     "path": "/login",
-    "component": "/Users/lianaabramyan/Desktop/cook-nuxt-2/client/pages/login.vue",
-    "chunkName": "pages/login",
-    "_name": "_5df1bbb6"
+    "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/login.vue",
+    "chunkName": "pages/login"
   },
   {
     "name": "profile",
     "path": "/profile",
-    "component": "/Users/lianaabramyan/Desktop/cook-nuxt-2/client/pages/profile.vue",
-    "chunkName": "pages/profile",
-    "_name": "_b8c30694"
+    "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/profile.vue",
+    "chunkName": "pages/profile"
   },
   {
     "name": "recipes",
     "path": "/recipes",
-    "component": "/Users/lianaabramyan/Desktop/cook-nuxt-2/client/pages/recipes/index.vue",
-    "chunkName": "pages/recipes/index",
-    "_name": "_39c36ab5"
+    "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/recipes/index.vue",
+    "chunkName": "pages/recipes/index"
   },
   {
     "name": "reg",
     "path": "/reg",
-    "component": "/Users/lianaabramyan/Desktop/cook-nuxt-2/client/pages/reg.vue",
-    "chunkName": "pages/reg",
-    "_name": "_18e100a1"
+    "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/reg.vue",
+    "chunkName": "pages/reg"
   },
   {
     "name": "search",
     "path": "/search",
-    "component": "/Users/lianaabramyan/Desktop/cook-nuxt-2/client/pages/search.vue",
-    "chunkName": "pages/search",
-    "_name": "_be9056aa"
+    "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/search.vue",
+    "chunkName": "pages/search"
   },
   {
     "name": "recipes-change-id",
     "path": "/recipes/change/:id?",
-    "component": "/Users/lianaabramyan/Desktop/cook-nuxt-2/client/pages/recipes/change/_id.vue",
-    "chunkName": "pages/recipes/change/_id",
-    "_name": "_145e8688"
+    "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/recipes/change/_id.vue",
+    "chunkName": "pages/recipes/change/_id"
   },
   {
     "name": "category-category",
     "path": "/category/:category",
-    "component": "/Users/lianaabramyan/Desktop/cook-nuxt-2/client/pages/category/_category.vue",
-    "chunkName": "pages/category/_category",
-    "_name": "_3c98df0f"
+    "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/category/_category.vue",
+    "chunkName": "pages/category/_category"
   },
   {
     "name": "recipes-id",
     "path": "/recipes/:id",
-    "component": "/Users/lianaabramyan/Desktop/cook-nuxt-2/client/pages/recipes/_id.vue",
-    "chunkName": "pages/recipes/_id",
-    "_name": "_8db2d346"
+    "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/recipes/_id.vue",
+    "chunkName": "pages/recipes/_id"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/lianaabramyan/Desktop/cook-nuxt-2/client/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_d76bcec2"
+    "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/index.vue",
+    "chunkName": "pages/index"
   }
 ]
