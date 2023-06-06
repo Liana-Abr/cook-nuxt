@@ -9,11 +9,11 @@ class UserController{
     // const newUser = await db.query('INSERT INTO users (name,email,password) values ($1,$2,$3) RETURNING *', [name,email,hashedPwd])
     // res.json(newUser.rows[0])
     try {
-      const {name,email,password,regDate} = req.body
+      const {name,email,password} = req.body
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const newUser = await db.query(
-        'INSERT INTO users (name,email,password,regDate) VALUES ($1,$2,$3,$4) RETURNING *'
-        , [name, email, hashedPassword,regDate]);
+        'INSERT INTO users (name,email,password) VALUES ($1,$2,$3) RETURNING *'
+        , [name, email, hashedPassword]);
       return res.json(jwtTokens(newUser.rows[0]));
     } catch (error) {
       return res.status(500).json({error: error.message});
