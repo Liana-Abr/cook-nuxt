@@ -4,9 +4,9 @@
     <h3>{{status}}</h3>
     <form @submit.prevent="updateRecipe">
       <p class="w">В поле, которое Вы не хотите изменять, впишите значение из подсказки</p>
-      <input type="text" v-model="updateName" :placeholder="`${recipe.name}`">
-      <input type="text" v-model="updateDesc" :placeholder="`${recipe.description}`">
-      <input type="text" v-model="updateImg" placeholder="URL изображения">
+      <input type="text" v-model="updateName = recipe.name">
+      <input type="text" v-model="updateDesc = recipe.description " :placeholder="`${recipe.description}`">
+      <input type="text" v-model="updateImg = recipe.image" placeholder="URL изображения">
       <input type="text" v-model="formattedTags" :placeholder="`${recipe.tags}`">
       <p class="w">Теги писать через точку</p>
       <button type="submit">Изменить</button>
@@ -16,13 +16,6 @@
 </template>
 <script>
 export default {
-  async asyncData({ params }) {
-    const id = params.id
-    const recipe = await fetch(
-      `http://localhost:3001/api/recipes/${id}`
-    ).then((res) => res.json())
-    return { id, recipe }
-  },
   data(){
     return{
       status: "",
@@ -32,6 +25,14 @@ export default {
       updateTags: [],
     }
   },
+  async asyncData({ params }) {
+    const id = params.id
+    const recipe = await fetch(
+      `http://localhost:3001/api/recipes/${id}`
+    ).then((res) => res.json())
+    return { id, recipe }
+  },
+
   methods:{
     updateRecipe: async function(){
       let body = {

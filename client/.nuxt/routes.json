@@ -3,72 +3,84 @@
     "name": "category",
     "path": "/category",
     "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/category/index.vue",
-    "chunkName": "pages/category/index"
+    "chunkName": "pages/category/index",
+    "_name": "_0babc3df"
   },
   {
     "name": "createrecipes",
     "path": "/createrecipes",
     "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/createrecipes.vue",
-    "chunkName": "pages/createrecipes"
+    "chunkName": "pages/createrecipes",
+    "_name": "_94564f8a"
   },
   {
     "name": "favorites",
     "path": "/favorites",
     "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/favorites.vue",
-    "chunkName": "pages/favorites"
+    "chunkName": "pages/favorites",
+    "_name": "_5dbebf2e"
   },
   {
     "name": "login",
     "path": "/login",
     "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/login.vue",
-    "chunkName": "pages/login"
+    "chunkName": "pages/login",
+    "_name": "_4b3e4d0a"
   },
   {
     "name": "profile",
     "path": "/profile",
     "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/profile.vue",
-    "chunkName": "pages/profile"
+    "chunkName": "pages/profile",
+    "_name": "_7e85858a"
   },
   {
     "name": "recipes",
     "path": "/recipes",
     "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/recipes/index.vue",
-    "chunkName": "pages/recipes/index"
+    "chunkName": "pages/recipes/index",
+    "_name": "_9f22190c"
   },
   {
     "name": "reg",
     "path": "/reg",
     "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/reg.vue",
-    "chunkName": "pages/reg"
+    "chunkName": "pages/reg",
+    "_name": "_6b96cba6"
   },
   {
     "name": "search",
     "path": "/search",
     "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/search.vue",
-    "chunkName": "pages/search"
+    "chunkName": "pages/search",
+    "_name": "_9ba720f4"
   },
   {
     "name": "recipes-change-id",
     "path": "/recipes/change/:id?",
     "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/recipes/change/_id.vue",
-    "chunkName": "pages/recipes/change/_id"
+    "chunkName": "pages/recipes/change/_id",
+    "_name": "_73d2b0e3"
   },
   {
     "name": "category-category",
     "path": "/category/:category",
     "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/category/_category.vue",
-    "chunkName": "pages/category/_category"
+    "chunkName": "pages/category/_category",
+    "_name": "_c7e5ed2c"
   },
   {
     "name": "recipes-id",
     "path": "/recipes/:id",
     "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/recipes/_id.vue",
-    "chunkName": "pages/recipes/_id"
+    "chunkName": "pages/recipes/_id",
+    "_name": "_9f90e73c"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/lianaabramyan/Desktop/cook-nuxt/client/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_10b93664"
   }
 ]
