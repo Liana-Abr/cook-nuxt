@@ -57,7 +57,7 @@ export default {
       regPwd: "",
       repeatPwd: "",
       regEmail: "",
-      regDate: `${new Date().toLocaleDateString().toString()}`
+      // regDate: `${new Date().toLocaleDateString().toString()}`
     }
   },
   methods:{
@@ -66,7 +66,6 @@ export default {
         name: this.regName,
         email: this.regEmail,
         password: this.regPwd,
-        regDate: this.regDate
       }
       if(this.checkPwd){
         const data = await fetch('http://localhost:3001/api/users/add',{

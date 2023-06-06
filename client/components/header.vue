@@ -1,4 +1,4 @@
-<template>
+ <template>
   <header>
     <NuxtLink to="/"><div class="logo"><span>let's</span> cook</div></NuxtLink>
     <!-- <NuxtLink to="/favorites" :style="{display: seeLink ? 'flex' : 'none'}">Избранное</NuxtLink> -->
@@ -7,7 +7,9 @@
       <li class="drop_menu" :style="{display: openNav ? 'flex' : 'none'}">
         <NuxtLink to="/category/breakfast">Завтраки</NuxtLink>
         <NuxtLink to="/category/salads">Салаты</NuxtLink>
-        <NuxtLink to="/category/pastry">Выпечка и десерты</NuxtLink>
+        <NuxtLink to="/category/pastry">Выпечка</NuxtLink>
+        <NuxtLink to="/category/desserts">Десерты</NuxtLink>
+
       </li>
     </ul>
 

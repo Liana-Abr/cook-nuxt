@@ -23,6 +23,7 @@
           </li>
         </ul>
         <input type="text" name="img" placeholder="URL изображения*" v-model="recipeImg" required>
+        <img :style="{display: recipeImg ? 'flex':'none'}" class="inp-img" :src="recipeImg" alt="no img">
         <input type="text" name="tags" placeholder="Теги" v-model="formattedTags">
         <ul class="w">
           <li>
@@ -248,6 +249,14 @@ export default {
   color: #729343;
   font-weight: bold;
   width: 350px;
+}
+.inp-img{
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .inp-long{
   width: 400px;

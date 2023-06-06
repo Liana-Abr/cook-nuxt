@@ -65,6 +65,8 @@ export default {
       console.log(this.accessToken)
       localStorage.setItem("UserToken", this.accessToken)
       this.status = `Вы вошли в свой аккаунт!`
+      window.location.reload(true)
+      this.$router.push('/');
     },
     getLoginInfo: async function(data){
       const res = await fetch(`http://localhost:3001/api/auth/login`, {

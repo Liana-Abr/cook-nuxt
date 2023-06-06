@@ -2,7 +2,6 @@
   <div class="category-container">
     <h1>
       {{ category }}
-      {{category2 || ""}}
     </h1>
     <div class="changeStyle-buttons">
       <button @click="saveDisplay" class="grid-btn" :class="{'grid-btn-active': !CardsStyle}" :style="{backgroundColor : CardsStyle ? 'transparent' : '#729343'}"><i class="bi bi-grid-3x3"></i></button>
@@ -46,7 +45,6 @@ export default {
   data(){
     return {
       category: "",
-      category2: "",
       CardsStyle: false,
     }
   },
@@ -63,8 +61,9 @@ export default {
         this.category = "Завтраки"
       } else if(this.$route.params.category === "pastry"){
         this.category = "Выпечка"
-        this.category2 = "Десерты"
-      } else {
+      } else if(this.$route.params.category === "desserts"){
+        this.category = "Десерты"
+      } else{
         this.category = "Салаты"
       }
       if(this.category){
@@ -73,7 +72,7 @@ export default {
         })
       }
       return this.recipes
-    }
+      }
   },
   methods:{
     saveDisplay() {

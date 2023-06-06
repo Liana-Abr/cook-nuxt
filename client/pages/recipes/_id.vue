@@ -43,7 +43,7 @@
             </div>
           </div>
 
-          <div class="clock">
+          <div class="clockID">
             <i class="bi bi-clock"></i>
             <p>{{recipe.time}}</p>
           </div>
@@ -123,7 +123,7 @@ export default {
       })
         .then((res) => res.json())
         .catch((err) => console.log(err))
-      console.log("Recipe deleted!")
+        this.$router.push('/');
     }
   }
 }
@@ -205,9 +205,13 @@ export default {
   width: 100%;
 }
 .left-container h3{
-  font-size: 28px;
+  font-size: 30px;
   display: flex;
   justify-content: left;
+  font-weight: bold;
+}
+.left-container h3:hover{
+  color: #8A8A8A;
 }
 .path{
   color: gray;
@@ -236,16 +240,20 @@ export default {
   background-color: transparent;
   border: none;
 }
-.contain .clock {
+.contain .clockID {
   font-size: 30px;
+  display: flex;
+  align-items: center;
   gap: 10px;
+}
+.contain .clockID:hover{
+  color: #8A8A8A;
 }
 .tags{
   display: flex;
   gap: 20px;
   text-transform: uppercase;
   font-size: 30px;
-  cursor: pointer;
 }
 .tag:hover{
   color: #8A8A8A;
@@ -300,17 +308,20 @@ export default {
 .steps li{
   margin-bottom: 50px;
 }
-.clock{
-  font-size: 20px;
-  padding: 10px;
-  display: flex;
-  gap: 10px;
-}
-.clock i{
+.clockID i{
   font-size: 30px;
 }
 .description{
   font-size: 30px;
+}
+.description:hover{
+  color: #8A8A8A;
+}
+.info-box p{
+  font-size: 30px;
+}
+.info-box p:hover{
+  color: #8A8A8A;
 }
 .info-box tr:nth-child(even){background-color: #f2f2f2;}
 .info-box th {
@@ -319,9 +330,15 @@ export default {
   color: white;
   font-size: 25px;
 }
+.info-box th:hover{
+  background-color: #628037;
+}
 .info-box td{
   text-align: center;
   font-size: 25px;
+}
+.info-box td:hover{
+  background-color: #dedddd;
 }
 .info-box p{
   font-size: 25px;
